@@ -11,6 +11,10 @@ nav{
     height: auto;
 }
 
+article{
+    border: solid 1px blue;
+}
+
 .nav-logo{
     float: left;
     margin-top: 5px;
