@@ -2,14 +2,15 @@ import { example } from './data.js';
 
 import data from './data/ghibli/ghibli.js';
 
-let numberElements = data.films.length;
+let allMovies = [];
 
-let imprimir = document.getElementById("movies");
-let escribimos = "";
-
-for(let i = 0; numberElements > i; i++) {
-    let experimento = (example(data.films))[i];
-    let bonito = experimento + "  ";
-    escribimos += bonito;
+for(let i = 0; i < data.films.length; i++){
+    allMovies.push(example(data.films[i]));
 }
-imprimir.innerHTML = escribimos; 
+ 
+for(let j = 0; j < allMovies.length; j++){
+    let elementArticle = document.createElement("article");
+    let text = document.createTextNode(allMovies[j][0] + " " + allMovies[j][1] + " " + allMovies[j][2]);
+    elementArticle.appendChild(text);
+    document.body.appendChild(elementArticle);
+}
