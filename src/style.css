@@ -1,6 +1,7 @@
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: auto 10%;
+    color: #454545;
 }
 
 nav{
@@ -27,53 +28,74 @@ nav{
     border: 2px solid #454545;
 }   
 
-.header{
+header{
     text-align: center;
-    justify-content: center;
-    /*border: 2pt solid violet;*/
 }
 
 h1{
     font-size: 60px;
+    text-shadow: 4px 4px 7px rgba(0, 0, 0, 0.2);
+    font-weight: 400;
+    letter-spacing: 0.185em;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 0%;
+}
+
+header p{
+    font-size: 22px;
+    margin: 1.7%;
 }
 
 h2{
     text-align: center;
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 90px;
+    letter-spacing: 0.355em;
+    border-top: solid 2px #0095EA;
+    border-bottom: solid 2px #0095EA;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 #movieList{
     align-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
 }
 
 article{
-    display: inline-block;
-    width: 17%;
-    margin: 2% 1%;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 5% auto;
     padding: 2%;
     border: solid 1px #C4C4C4;
     border-radius: 15px;
-    text-align: center;
-    color: #454545;
-    box-shadow: 15px 15px 17px -7px rgba(0, 0, 0, 0.07);
-    
+    text-align: left;
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.05);
+    height: 85%;
 }
 
 article img {
-    height: auto;
+    height: 80%;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    margin-bottom: 1em;
+    border-radius: 12px;
+    margin: 1em 5% auto 5%;
 }
 
 article p {
-    border: solid 1px orange;
     display: block;
+    line-height: 1.6em;
+    padding: 0.5em 1em 1em 0.5em;
 }
 
 #front-page-img{
-    position: fixed;
+    position: relative;
     width: 20%;
     right: 0%;
     bottom: 0%;
