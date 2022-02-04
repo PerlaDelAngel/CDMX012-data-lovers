@@ -11,10 +11,6 @@ nav{
     height: auto;
 }
 
-article{
-    border: solid 1px blue;
-}
-
 .nav-logo{
     float: left;
     margin-top: 5px;
@@ -43,7 +39,36 @@ h1{
 
 h2{
     text-align: center;
-    justify-content: center;
+}
+
+#movieList{
+    align-content: center;
+}
+
+article{
+    display: inline-block;
+    width: 17%;
+    margin: 2% 1%;
+    padding: 2%;
+    border: solid 1px #C4C4C4;
+    border-radius: 15px;
+    text-align: center;
+    color: #454545;
+    box-shadow: 15px 15px 17px -7px rgba(0, 0, 0, 0.07);
+}
+
+article img {
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-bottom: 1em;
+}
+
+article p {
+    border: solid 1px orange;
+    display: inline;
 }
 
 #front-page-img{
