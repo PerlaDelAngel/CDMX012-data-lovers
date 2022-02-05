@@ -1,12 +1,12 @@
 body{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: auto 10%;
+   /* margin: auto 10%; */
     color: #454545;
     
 }
 
 nav{
-    margin: 0;
+    margin: 0 10%;
     padding: 0;
     overflow: hidden;
     background-color: white;
@@ -63,10 +63,38 @@ h2{
     margin-right: 15%;
 }
 
+main {
+    margin: auto 10%;
+}
+
+.title-filter {
+    text-align: right;
+}
+
+.title-filter select {
+    border: solid 1px #C4C4C4;
+    font-size: large;
+    border-radius: 12px;
+    padding: 1%;
+    margin: 2%;
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.05);
+}
+
+.title-filter select option{
+    color: #454545;
+}
+
+.title-filter select:focus{
+    border:solid 2px #0095EA;
+    color: #0095EA;
+}
+
 #movieList{
     align-content: center;
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    gap: 1rem;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
 }
 
 article{
@@ -96,9 +124,18 @@ article p {
 }
 
 #front-page-img{
-    position: relative;
+    position: absolute;
     width: 20%;
     right: 0%;
     bottom: 0%;
+    float: right;
     /*border: 2pt solid rgb(24, 233, 76);*/
+}
+
+footer {
+    background-color: rgba(0, 149, 234, 0.22);
+    height: 5em;
+    width: 100%;
+    position: relative;
+    margin-top:8%;
 }
