@@ -14,11 +14,15 @@
         <header>
             <h1>GHIBLIPEDIA</h1>
             <p>Welcome to Studio Ghibli's world! <br> Discover more about your favorite animated movies.</p>
+            <section id="menu">
+                <button id="btnMovies" class="menu-buttons">Movies</button>
+                <button id="btnStaff" class="menu-buttons">Directors and producers</button>
+            </section>
         </header>
 
-        <main class="movies-content">
+        <main class="movies-content" id="movies-content">
             <h2>MOVIES</h2>
-            <section class="title-filter">
+            <section class="sort">
                 <select>
                     <option disabled selected>Sort by</option>
                     <option>A-Z</option>
@@ -29,7 +33,17 @@
             </section>
             <section id="movieList"></section>
         </main>
-        
+
+        <main class="staff-content" id="staff-content">
+            <h2>DIRECTORS AND PRODUCERS</h2>
+            <section class="sort">
+                <select>
+                    <option disabled selected>Sort by</option>
+                    <option>A-Z</option>
+                    <option>Z-A</option>
+                </select>
+            </section>
+        </main>
 
         <footer>
             <img src="Images/TotoroMain.png" alt="Totoro" id="front-page-img">

@@ -5,6 +5,10 @@ body{
     
 }
 
+.staff-content {
+    display: none;
+}
+
 nav{
     margin: 0 10%;
     padding: 0;
@@ -18,8 +22,8 @@ nav{
     margin-top: 5px;
 }
 
-.buttons{
-    float: right;
+button{
+    
     margin-top: 2%;
     font-size: 18px;
     text-align: center;
@@ -28,6 +32,10 @@ nav{
     border-radius: 15px;
     border: 2px solid #454545;
 }   
+
+.buttons{
+    float: right;
+}
 
 header{
     text-align: center;
@@ -67,11 +75,11 @@ main {
     margin: auto 10%;
 }
 
-.title-filter {
+.sort {
     text-align: right;
 }
 
-.title-filter select {
+.sort select {
     border: solid 1px #C4C4C4;
     font-size: large;
     border-radius: 12px;
@@ -80,11 +88,11 @@ main {
     box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.05);
 }
 
-.title-filter select option{
+.sort select option{
     color: #454545;
 }
 
-.title-filter select:focus{
+.sort select:focus{
     border:solid 2px #0095EA;
     color: #0095EA;
 }
@@ -92,7 +100,7 @@ main {
 #movieList{
     align-content: center;
     display: grid;
-    gap: 1rem;
+    gap: 1.5rem;
     grid-auto-rows: auto;
     grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
 }
