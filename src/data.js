@@ -3,11 +3,21 @@ export const movieCards = (movies) => {
   return movie;
 };
 
-/*export const staffCards = (staff) => {
-  let director = staff.director;
-  
-  return
-};*/
+export const directors = (staff) => {
+  let director = [staff.director, staff.title];
+  return director;
+};
+
+export const producers = (staff) => {
+  let producer = [staff.producer, staff.title];
+  return producer;
+};
+
+export const staffArray = (movies) => {
+  let info = [movies.title, movies.director, movies.producer];
+  return info;
+};
+
 
 // Encuentra director1.
 // Busca todas las películas que tengan "director : director1".
