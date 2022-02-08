@@ -1,6 +1,5 @@
 import { movieCards } from '../src/data.js';
 
-
 describe('movieCards', () => {
   it('is a function', () => {
     expect(typeof movieCards).toBe('function');
@@ -17,10 +16,9 @@ describe('movieCards', () => {
       "release_date": "1986",
       "rt_score": "95"
     }
-    expect(movieCards(films)).toMatchObject(Array("https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg", "Castle in the Sky", "1986"));
+    expect(movieCards(films)).toEqual(["https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg", "Castle in the Sky", "1986"]);
   });
 });
-
 
 /*describe('anotherExample', () => {
   it('is a function', () => {

@@ -1,6 +1,6 @@
 body{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   /* margin: auto 10%; */
+    font-family: 'Poppins', sans-serif; 
+    margin: 0; 
     color: #454545;
     
 }
@@ -23,7 +23,6 @@ nav{
 }
 
 button{
-    
     margin-top: 2%;
     font-size: 18px;
     text-align: center;
@@ -31,9 +30,10 @@ button{
     padding: 14px 17px;
     border-radius: 15px;
     border: 2px solid #454545;
+    cursor: pointer; 
 }   
 
-.buttons{
+.nav-buttons{ 
     float: right;
 }
 
@@ -43,7 +43,7 @@ header{
 
 h1{
     font-size: 60px;
-    text-shadow: 4px 4px 7px rgba(0, 0, 0, 0.2);
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
     font-weight: 400;
     letter-spacing: 0.185em;
     text-align: center;
@@ -53,15 +53,36 @@ h1{
 
 header p{
     font-size: 22px;
-    margin: 1.7%;
+    margin-bottom: 2%;
 }
+
+.menu-buttons{ /*Nueva clase para los botones del menú*/
+    margin: 1% 0.5%;
+    font-size: 18px;
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+    border: 2px solid #0095EA;
+    cursor: pointer;
+    width: 20%;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    font-weight: 300;
+}
+
+.menu-buttons:hover{ /*Para insertar la imagen cuando el user pasa el mouse*/
+    border: 2px solid white;
+    color: white;
+    background-color: #0095EA;
+    
+}
+
 
 h2{
     text-align: center;
     font-weight: 600;
     font-size: 45px;
     line-height: 90px;
-    letter-spacing: 0.355em;
+    letter-spacing: 0.2em;
     border-top: solid 2px #0095EA;
     border-bottom: solid 2px #0095EA;
     padding-top: 1%;
@@ -69,6 +90,7 @@ h2{
     width: 70%;
     margin-left: 15%;
     margin-right: 15%;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 main {
@@ -116,6 +138,7 @@ article{
     text-align: left;
     box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.05);
     height: 85%;
+    background-color: #4545450c;
 }
 
 article img {
@@ -142,8 +165,8 @@ article p {
 
 footer {
     background-color: rgba(0, 149, 234, 0.22);
-    height: 5em;
+    height: 3.5em;
     width: 100%;
     position: relative;
-    margin-top:8%;
+    margin-top: 10%;
 }
