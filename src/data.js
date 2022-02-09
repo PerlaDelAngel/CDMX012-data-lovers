@@ -4,21 +4,35 @@ export const movieCards = (movies) => {
 };
 
 export const directors = (staff) => {
-  let director = [staff.director, staff.title];
+  let director = staff.director;
   return director;
 };
 
 export const producers = (staff) => {
-  let producer = [staff.producer, staff.title];
+  let producer = staff.producer;
   return producer;
 };
 
-export const staffArray = (movies) => {
-  let info = [movies.title, movies.director, movies.producer];
-  return info;
+export const directorTitles = (movies, name) => {
+  let directorMovieTitles = [name];
+
+  for(let j = 0; j < movies.length; j++){
+      if(movies[j].director == name){
+        directorMovieTitles.push(movies[j].title);
+      }
+  }
+
+  return directorMovieTitles;
 };
 
+export const producerTitles = (movies, name) => {
+  let producerMovieTitles = [];
 
-// Encuentra director1.
-// Busca todas las películas que tengan "director : director1".
-// Devuelve director 1 y todas las películas.
+  for(let j = 0; j < movies.length; j++){
+      if(movies[j].producer == name){
+        producerMovieTitles.push(movies[j].title);
+      }
+  }
+
+  return producerMovieTitles;
+};

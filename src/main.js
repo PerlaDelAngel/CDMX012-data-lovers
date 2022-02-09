@@ -1,4 +1,4 @@
-import { movieCards, directors, producers, staffArray } from './data.js';
+import { movieCards, directors, producers, directorTitles, producerTitles } from './data.js';
 
 import data from './data/ghibli/ghibli.js';
 
@@ -42,20 +42,8 @@ for(let j = 0; j < allMovies.length; j++){
     document.getElementById("movieList").appendChild(elementArticle);
 }
 
-/* MOSTRAR DIRECTORES Y PRODUCTORES
- Saber cuántos directores y productores son.
- Sacar una lista con cada uno, sin repetir.
- Buscar en cuáles películas han participado.
- Mostrar en su tarjeta esas películas y el tipo de participación.
-
- 1. Muestra directores y productores.
- 2. Elimina los que se repitan.
- 3. Busca qué películas tienen el nombre de cada uno y crea una lista.
- 4. Identifica si tienen el key director o producer. 
- 5. Muéstralo en una tarjeta por cada persona.
-
-*/
-
+// MOSTRAR DIRECTORES Y PRODUCTORES
+//Obtener una lista con los nombres de todos los directores y productores
 let people = [];
 
 for(let i = 0; i < data.films.length; i++){ 
@@ -63,37 +51,42 @@ for(let i = 0; i < data.films.length; i++){
     people.push(producers(data.films[i]));
 }
 
-function onlyNames(value, index, self){
-    return self.indexOf(value) === index;
+//Filtrar la lista para quitar los repetidos, da una lista de 9 nombres
+let nameList = people.filter((item,index) => {
+    return people.indexOf(item) === index;
+});
+
+// Saca un array con los titulos de las peliculas donde participó cada director
+let directorTitlesArray = [];
+
+for(let i = 0; i < nameList.length; i++){
+    directorTitlesArray.push(directorTitles(data.films, nameList[i]));
 }
 
-let nameList = people.filter(onlyNames);
-console.log(nameList);
+console.log(directorTitlesArray);
 
-/*let moviesAndStaff = [];
-for(let i = 0; i < data.films.length; i++){
-    moviesAndStaff.push(staffArray(data.films[i]));
+//Saca un array con los titulos de las peliculas donde participó cada productor
+let producerTitlesArray = [];
+
+for(let i = 0; i < nameList.length; i++){
+    producerTitlesArray.push(producerTitles(data.films, nameList[i]));
 }
-console.log(moviesAndStaff);
 
-/*for(let i = 0; i < moviesAndStaff.length; i++){
-    for(let j = 0; j < nameList.length; j++){
-       if(moviesAndStaff[i].includes(nameList[j])){
-           console.log(moviesAndStaff[i] + " contiene a " + nameList[j]);
-       }
+//Imprimir las tarjetas para cada nombre de DIRECTOR
+for(let j = 0; j < directorTitlesArray.length; j++){
+    let elementArticle2 = document.createElement("article");
+    elementArticle2.innerHTML = "<h3>" + directorTitlesArray[j][0] + "</h3>";
+
+    let elementOl = document.createElement("ol");
+
+    for(let i = 1; i < directorTitlesArray[j].length; i++){
+        if(directorTitlesArray[j][i].length > 0){
+            let elementLi = document.createElement("li");
+            elementLi.innerHTML = "<strong>" + directorTitlesArray[j][i] + "</strong>" + "<br>";
+            elementOl.appendChild(elementLi);
+        } 
+        elementArticle2.appendChild(elementOl);
+
+        document.getElementById("staff-content").appendChild(elementArticle2);
     }
 }
-
-/* Recorrer la lista de nombres
-let movieList = [];
-for(let i = 0; i < data.films.length; i ++){
-    for(let j = 0; j < nameList.length; j ++){
-    movieList.push(search(nameList[j], data.films[i]));
-    }
-}
-console.log(movieList);
-
-// Toma un nombre de la lista.
-// Ve a data.films, busca en qué elemento del array aparece el nombre. 
-// Filtra ¿?
-// Devuelve el key title de esos elementos. */
