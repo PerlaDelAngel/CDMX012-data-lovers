@@ -82,7 +82,7 @@ for(let j = 0; j < directorTitlesArray.length; j++){
     for(let i = 1; i < directorTitlesArray[j].length; i++){
         if(directorTitlesArray[j][i].length > 0){
             let elementLi = document.createElement("li");
-            elementLi.innerHTML = "<strong>" + directorTitlesArray[j][i] + "</strong>" + "<br>";
+            elementLi.innerHTML =  directorTitlesArray[j][i] /*+ "<br>"*/;
             elementOl.appendChild(elementLi);
         } 
         elementArticle2.appendChild(elementOl);
