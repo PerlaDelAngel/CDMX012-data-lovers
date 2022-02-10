@@ -1,11 +1,10 @@
-import { movieCards } from '../src/data.js';
+import { movieCards, sortByAZMovies, sortByHR } from '../src/data.js';
 
 describe('movieCards', () => {
   it('is a function', () => {
     expect(typeof movieCards).toBe('function');
   });
-
-  it('returns ` movie poster, title and release date `', () => {
+  it('returns ` movie poster, title and rating `', () => {
     const films={
       "id": "2baf70d1-42bb-4437-b551-e5fed5a87abe",
       "title": "Castle in the Sky",
@@ -16,16 +15,26 @@ describe('movieCards', () => {
       "release_date": "1986",
       "rt_score": "95"
     }
-    expect(movieCards(films)).toEqual(["https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg", "Castle in the Sky", "1986"]);
+    expect(movieCards(films)).toEqual(["https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg", "Castle in the Sky", "95"]);
   });
 });
 
-/*describe('anotherExample', () => {
+describe('sortByAZMovies', () => {
   it('is a function', () => {
-    expect(typeof anotherExample).toBe('function');
+    expect(typeof sortByAZMovies).toBe('function');
   });
+  it('returns ` sorted array by alphabetical order`', () => {
+    const array1 = [["ABC", "Eli"], ["1", "Perla"], ["TH", "Isabela"]];
+    expect(sortByAZMovies(array1)).toEqual([["ABC", "Eli"], ["TH", "Isabela"], ["1", "Perla"]]);
+  });
+});
 
-  it('returns `anotherExample`', () => {
-    expect(anotherExample()).toBe('OMG');
+describe('sortByHR', () => {
+  it('is a function', () => {
+    expect(typeof sortByHR).toBe('function');
   });
-}); */
+  it('returns ` sorted array by rating order`', () =>{
+    const array1 = [["ABC", "Eli", "100"], ["1", "Perla", "120"], ["TH", "Isabela", "110"]];
+    expect(sortByHR(array1)).toEqual([["1", "Perla", "120"], ["TH", "Isabela", "110"], ["ABC", "Eli", "100"]]);
+  });
+});
