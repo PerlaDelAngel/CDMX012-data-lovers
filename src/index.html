@@ -28,10 +28,10 @@
             <section class="sort">
                 <select>
                     <option disabled selected>Sort by</option>
-                    <option>A-Z</option>
-                    <option>Z-A</option>
-                    <option>Newest to Oldest</option>
-                    <option>Oldest to Newest</option>
+                    <option id="sortAZ">A-Z</option>
+                    <option id="sortZA">Z-A</option>
+                    <option id="sortHR">Highest rating</option>
+                    <option id="sortLR">Lowest rating</option>
                 </select>
             </section>
             <section id="movieList"></section>
@@ -39,6 +39,12 @@
 
         <main class="staff-content" id="staff-content">
             <h2>DIRECTORS AND PRODUCERS</h2>
+            <p> Filter by: </p>
+            <input type="radio" id="directorRadio" name="staffRadio">
+            <label for="directorRadio">Directors</label>
+            <input type="radio" id="producerRadio" name="staffRadio">
+            <label for="producerRadio">Producers</label>
+
             <section class="sort">
                 <select>
                     <option disabled selected>Sort by</option>
