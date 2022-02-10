@@ -3,7 +3,6 @@ import { movieCards, directors, producers, directorTitles, producerTitles, sortB
 import data from './data/ghibli/ghibli.js';
 
 // DESPLEGAR SECCIONES
-
 const sectionMovies = document.getElementById("movies-content");
 const sectionStaff = document.getElementById("staff-content");
 
@@ -25,14 +24,36 @@ for(let i = 0; i < data.films.length; i++){
     allMovies.push(movieCards(data.films[i]));
 }
 
-// ORDENAR TARJETAS ESTO NO FUNCIONA COMPLETAMENTE, HAY QUE ORDENAR ALLMOVIES NO UN NUEVO ARRAY
-let movieTitles = allMovies.map(movie =>{return movie[1]});
-let movieRating = allMovies.map(movie =>{return movie[2]});
+//FUNCIONALIDAD DEL FILTRO DE SORT BY EN LA SECCIÓN DE MOVIES
+//Llama al elemento select de la sección de Movies y lo guarda en una variable
+const selectSortMovies = document.querySelector("#selectSortMovies");
 
-console.log(sortByAZMovies(movieTitles));
+//Es la función de lo que se va a hacer según el elemento que se selccione en el Select
+const selectedSort = () => {
+    const selectedOption = selectSortMovies.selectedIndex; 
+    if (selectedOption === 1){ //Para la primera opción
+        console.log("si funciona AZ :D!!!!!!!");
+    } if (selectedOption === 2){
+        console.log(":O");
+    } if (selectedOption === 3){
+        console.log("omg");
+    } if (selectedOption === 4) {
+        console.log("omg x2");
+    }
+}
+
+//Agrega el evento a ejecutar cuando haya un cambio en el select
+selectSortMovies.addEventListener("change", selectedSort);
+
+// ORDENAR TARJETAS ESTO NO FUNCIONA COMPLETAMENTE, HAY QUE ORDENAR ALLMOVIES NO UN NUEVO ARRAY
+//let movieTitles = allMovies.map(movie =>{return movie[1]});
+//let movieRating = allMovies.map(movie =>{return movie[2]});
+
+/*console.log(sortByAZMovies(movieTitles));
 console.log(sortByZAMovies(movieTitles));
 console.log(sortByHR(movieRating));
-console.log(sortByLR(movieRating));
+console.log(sortByLR(movieRating));*/
+
 
 // Imprime tarjetas con los elementos de allMovies (con el poster, titulo y año).
 for(let j = 0; j < allMovies.length; j++){
