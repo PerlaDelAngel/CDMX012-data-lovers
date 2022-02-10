@@ -69,20 +69,6 @@ const selectedSort = () => {
 //Agrega el evento a ejecutar cuando haya un cambio en el select
 selectSortMovies.addEventListener("change", selectedSort);
 
-// ORDENAR TARJETAS ESTO NO FUNCIONA COMPLETAMENTE, HAY QUE ORDENAR ALLMOVIES NO UN NUEVO ARRAY
-//let movieTitles = allMovies.map(movie =>{return movie[1]});
-//let movieRating = allMovies.map(movie =>{return movie[2]});
-
-/*console.log(sortByAZMovies(movieTitles));
-console.log(sortByZAMovies(movieTitles));
-console.log(sortByHR(movieRating));
-console.log(sortByLR(movieRating));*/
-
-
-// Imprime tarjetas con los elementos de allMovies (con el poster, titulo y año).
-
-
-
 // MOSTRAR DIRECTORES Y PRODUCTORES
 //Obtener una lista con los nombres de todos los directores y productores
 let people = [];
@@ -107,7 +93,7 @@ for(let i = 0; i < nameList.length; i++){
 //Imprimir las tarjetas para cada nombre de DIRECTOR
 for(let j = 0; j < directorTitlesArray.length; j++){
     let elementArticle = document.createElement("article");
-    elementArticle.innerHTML = "<h3>" + directorTitlesArray[j][0] + "</h3>";
+    elementArticle.innerHTML = "<h3>" + directorTitlesArray[j][0] + "</h3>" + "<p> As director of: </p>";
 
     let elementOl = document.createElement("ol");
 
@@ -119,7 +105,7 @@ for(let j = 0; j < directorTitlesArray.length; j++){
         } 
         elementArticle.appendChild(elementOl);
 
-        document.getElementById("staff-content").appendChild(elementArticle);
+        document.getElementById("staffList").appendChild(elementArticle);
     }
 }
 
@@ -133,7 +119,7 @@ for(let i = 0; i < nameList.length; i++){
 //Imprimir las tarjetas para cada nombre de PRODUCTOR
 for(let j = 0; j < producerTitlesArray.length; j++){
     let elementArticle = document.createElement("article");
-    elementArticle.innerHTML = "<h3>" + producerTitlesArray[j][0] + "</h3>";
+    elementArticle.innerHTML = "<h3>" + producerTitlesArray[j][0] + "</h3>" + "<p> As producer of: </p>";
 
     let elementOl = document.createElement("ol");
 
@@ -145,6 +131,6 @@ for(let j = 0; j < producerTitlesArray.length; j++){
         } 
         elementArticle.appendChild(elementOl);
 
-        document.getElementById("staff-content").appendChild(elementArticle);
+        document.getElementById("staffList").appendChild(elementArticle);
     }
 }
