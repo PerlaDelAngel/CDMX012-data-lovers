@@ -1,4 +1,4 @@
-import { movieCards, directors, producers, directorTitles, producerTitles } from './data.js';
+import { movieCards, directors, producers, directorTitles, producerTitles, sortByAZMovies, sortByZAMovies, sortByHR, sortByLR } from './data.js';
 
 import data from './data/ghibli/ghibli.js';
 
@@ -21,10 +21,18 @@ btnStaff.addEventListener("click", function(){ displaySections(sectionMovies, se
 // MOSTRAR PELICULAS
 let allMovies = []; 
 
-// Mete en el array allMovies, los datos de todas las peliculas.
 for(let i = 0; i < data.films.length; i++){ 
     allMovies.push(movieCards(data.films[i]));
 }
+
+// ORDENAR TARJETAS ESTO NO FUNCIONA COMPLETAMENTE, HAY QUE ORDENAR ALLMOVIES NO UN NUEVO ARRAY
+let movieTitles = allMovies.map(movie =>{return movie[1]});
+let movieRating = allMovies.map(movie =>{return movie[2]});
+
+console.log(sortByAZMovies(movieTitles));
+console.log(sortByZAMovies(movieTitles));
+console.log(sortByHR(movieRating));
+console.log(sortByLR(movieRating));
 
 // Imprime tarjetas con los elementos de allMovies (con el poster, titulo y año).
 for(let j = 0; j < allMovies.length; j++){
@@ -32,10 +40,11 @@ for(let j = 0; j < allMovies.length; j++){
 
     let imgMovie = document.createElement("img");
     imgMovie.setAttribute("src", allMovies[j][0]);
-
+  
     let elementP = document.createElement("p");
-    elementP.innerHTML = "<strong>" + allMovies[j][1] + "</strong>" + "<br>" + allMovies[j][2];
-    
+
+    elementP.innerHTML = "<strong>" + allMovies[j][1] + "</strong>" + "<br>" + "★ Rating: " + allMovies[j][2] + "%";
+
     elementArticle.appendChild(imgMovie);
     elementArticle.appendChild(elementP);
 
@@ -63,7 +72,24 @@ for(let i = 0; i < nameList.length; i++){
     directorTitlesArray.push(directorTitles(data.films, nameList[i]));
 }
 
-console.log(directorTitlesArray);
+//Imprimir las tarjetas para cada nombre de DIRECTOR
+for(let j = 0; j < directorTitlesArray.length; j++){
+    let elementArticle = document.createElement("article");
+    elementArticle.innerHTML = "<h3>" + directorTitlesArray[j][0] + "</h3>";
+
+    let elementOl = document.createElement("ol");
+
+    for(let i = 1; i < directorTitlesArray[j].length; i++){
+        if(directorTitlesArray[j][i].length > 0){
+            let elementLi = document.createElement("li");
+            elementLi.innerHTML =  directorTitlesArray[j][i];
+            elementOl.appendChild(elementLi);
+        } 
+        elementArticle.appendChild(elementOl);
+
+        document.getElementById("staff-content").appendChild(elementArticle);
+    }
+}
 
 //Saca un array con los titulos de las peliculas donde participó cada productor
 let producerTitlesArray = [];
@@ -72,21 +98,21 @@ for(let i = 0; i < nameList.length; i++){
     producerTitlesArray.push(producerTitles(data.films, nameList[i]));
 }
 
-//Imprimir las tarjetas para cada nombre de DIRECTOR
-for(let j = 0; j < directorTitlesArray.length; j++){
-    let elementArticle2 = document.createElement("article");
-    elementArticle2.innerHTML = "<h3>" + directorTitlesArray[j][0] + "</h3>";
+//Imprimir las tarjetas para cada nombre de PRODUCTOR
+for(let j = 0; j < producerTitlesArray.length; j++){
+    let elementArticle = document.createElement("article");
+    elementArticle.innerHTML = "<h3>" + producerTitlesArray[j][0] + "</h3>";
 
     let elementOl = document.createElement("ol");
 
-    for(let i = 1; i < directorTitlesArray[j].length; i++){
-        if(directorTitlesArray[j][i].length > 0){
+    for(let i = 1; i < producerTitlesArray[j].length; i++){
+        if(producerTitlesArray[j][i].length > 0){
             let elementLi = document.createElement("li");
-            elementLi.innerHTML =  directorTitlesArray[j][i] /*+ "<br>"*/;
+            elementLi.innerHTML =  producerTitlesArray[j][i];
             elementOl.appendChild(elementLi);
         } 
-        elementArticle2.appendChild(elementOl);
+        elementArticle.appendChild(elementOl);
 
-        document.getElementById("staff-content").appendChild(elementArticle2);
+        document.getElementById("staff-content").appendChild(elementArticle);
     }
 }
