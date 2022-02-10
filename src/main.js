@@ -1,4 +1,4 @@
-import { movieCards, directors, producers, directorTitles, producerTitles, sortByAZMovies, sortByZAMovies, sortByHR, sortByLR } from './data.js';
+import { movieCards, directors, producers, directorTitles, producerTitles, sortByAZMovies, sortByHR } from './data.js';
 
 import data from './data/ghibli/ghibli.js';
 
@@ -24,6 +24,26 @@ for(let i = 0; i < data.films.length; i++){
     allMovies.push(movieCards(data.films[i]));
 }
 
+function printMovieCards(allMovies){
+    document.getElementById("movieList").innerHTML = "";
+    for(let j = 0; j < allMovies.length; j++){
+        let elementArticle = document.createElement("article");
+
+        let imgMovie = document.createElement("img");
+        imgMovie.setAttribute("src", allMovies[j][0]);
+    
+        let elementP = document.createElement("p");
+
+        elementP.innerHTML = "<strong>" + allMovies[j][1] + "</strong>" + "<br>" + "★ Rating: " + allMovies[j][2] + "%";
+
+        elementArticle.appendChild(imgMovie);
+        elementArticle.appendChild(elementP);
+
+        document.getElementById("movieList").appendChild(elementArticle);
+    }
+}
+
+printMovieCards(allMovies);
 //FUNCIONALIDAD DEL FILTRO DE SORT BY EN LA SECCIÓN DE MOVIES
 //Llama al elemento select de la sección de Movies y lo guarda en una variable
 const selectSortMovies = document.querySelector("#selectSortMovies");
@@ -32,13 +52,17 @@ const selectSortMovies = document.querySelector("#selectSortMovies");
 const selectedSort = () => {
     const selectedOption = selectSortMovies.selectedIndex; 
     if (selectedOption === 1){ //Para la primera opción
-        console.log("si funciona AZ :D!!!!!!!");
+        let allMoviesAZ = sortByAZMovies(allMovies);
+        printMovieCards(allMoviesAZ);
     } if (selectedOption === 2){
-        console.log(":O");
+        let allMoviesZA = sortByAZMovies(allMovies).reverse();
+        printMovieCards(allMoviesZA);
     } if (selectedOption === 3){
-        console.log("omg");
+        let allMoviesHR = sortByHR(allMovies);
+        printMovieCards(allMoviesHR);
     } if (selectedOption === 4) {
-        console.log("omg x2");
+        let allMoviesLR = sortByHR(allMovies).reverse();
+        printMovieCards(allMoviesLR);
     }
 }
 
@@ -56,21 +80,8 @@ console.log(sortByLR(movieRating));*/
 
 
 // Imprime tarjetas con los elementos de allMovies (con el poster, titulo y año).
-for(let j = 0; j < allMovies.length; j++){
-    let elementArticle = document.createElement("article");
 
-    let imgMovie = document.createElement("img");
-    imgMovie.setAttribute("src", allMovies[j][0]);
-  
-    let elementP = document.createElement("p");
 
-    elementP.innerHTML = "<strong>" + allMovies[j][1] + "</strong>" + "<br>" + "★ Rating: " + allMovies[j][2] + "%";
-
-    elementArticle.appendChild(imgMovie);
-    elementArticle.appendChild(elementP);
-
-    document.getElementById("movieList").appendChild(elementArticle);
-}
 
 // MOSTRAR DIRECTORES Y PRODUCTORES
 //Obtener una lista con los nombres de todos los directores y productores

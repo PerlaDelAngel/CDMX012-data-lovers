@@ -5,32 +5,28 @@ export const movieCards = (movies) => {
 };
 
 // Nos devuelve un array ordenado de A a Z, para los titulos de las peliculas.
+// Si a = b, regresa 0: a, b
+// Si a < b, regresa -1: a, b
+// Si b < a, regresa 1: b, a
+
 export const sortByAZMovies = (movieTitles) => {
-  let moviesAZ = movieTitles.sort();
+  let moviesAZ = movieTitles.sort(function(a,b){
+    if(a[1] === b[1]){
+      return 0;
+    } if(a[1] < b[1]){
+      return -1;
+    } if(a[1] > b[1]) {
+      return 1;
+    }});
   return moviesAZ;
 };
-
-// Nos devuelve un array ordenado de Z a A, para los titulos de las peliculas.
-export const sortByZAMovies = (movieTitles) => {
-  let moviesZA = movieTitles.sort();
-  moviesZA.reverse();
-  return moviesZA;
-}
 
 // Nos devuelve un array ordenado de mayor a menor, para los ratings de las peliculas.
 export const sortByHR = (movieRating) => {
   let movieHR = movieRating.sort(function(a, b){
-    return b - a;
+    return b[2] - a[2];
   });
   return movieHR;
-}
-
-// Nos devuelve un array ordenado de menor a mayor, para los ratings de las peliculas.
-export const sortByLR = (movieRating) => {
-  let movieLH = movieRating.sort(function(a, b){
-    return a - b;
-  });
-  return movieLH;
 }
 
 // Nos devuelve los nombres de los directores.
