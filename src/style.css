@@ -119,7 +119,7 @@ main {
     color: #0095EA;
 }
 
-#movieList{
+#movieList {
     align-content: center;
     display: grid;
     gap: 1.5rem;
@@ -150,7 +150,34 @@ article img {
 
 article p {
     line-height: 1.6em;
-    padding: 0.5em 1em 1em 0.5em;
+    padding: 0.5em 1em 1.5em 0.5em;
+}
+
+#staffList{
+    align-content: center;
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fill, minmax(1fr, 2fr));
+}
+
+#staffList article{
+    width: 30%;
+    margin: 5% auto;
+    padding: 2%;
+}
+
+/*#staffList h3 p{
+    padding-left: 10%;
+    /*padding-top: 5%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}*/
+
+
+#staffList ol {
+    padding-left: 3em;
+    padding-bottom: 1em;
 }
 
 #front-page-img{
