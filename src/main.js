@@ -146,3 +146,6 @@ for(let j = 0; j < producerTitlesArray.length; j++){
         document.getElementById("staffList").appendChild(elementArticle);
     }
 }
+
+const selectSortStaff = document.querySelector("#selectSortStaff");
+selectSortStaff.addEventListener("change", selectedSort);
