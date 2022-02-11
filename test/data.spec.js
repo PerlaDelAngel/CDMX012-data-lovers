@@ -1,9 +1,12 @@
+import { describe, it } from 'eslint/lib/rule-tester/rule-tester';
+
 import { movieCards, sortByAZMovies, sortByHR } from '../src/data.js';
 
 describe('movieCards', () => {
   it('is a function', () => {
     expect(typeof movieCards).toBe('function');
   });
+
   it('returns ` movie poster, title and rating `', () => {
     const films={
       "id": "2baf70d1-42bb-4437-b551-e5fed5a87abe",
@@ -22,7 +25,26 @@ describe('movieCards', () => {
 describe('sortByAZMovies', () => {
   it('is a function', () => {
     expect(typeof sortByAZMovies).toBe('function');
+
   });
+  it('returns ` sorted array by alphabetical order`', () => {
+    const array1 = [["ABC", "Eli"], ["1", "Perla"], ["TH", "Isabela"]];
+    expect(sortByAZMovies(array1)).toEqual([["ABC", "Eli"], ["TH", "Isabela"], ["1", "Perla"]]);
+
+  });
+});
+
+
+describe('sortByHR', () => {
+  it('is a function', () => {
+    expect(typeof sortByHR).toBe('function');
+  });
+  it('returns ` sorted array by rating order`', () =>{
+    const array1 = [["ABC", "Eli", "100"], ["1", "Perla", "120"], ["TH", "Isabela", "110"]];
+    expect(sortByHR(array1)).toEqual([["1", "Perla", "120"], ["TH", "Isabela", "110"], ["ABC", "Eli", "100"]]);
+  });
+});
+
   it('returns ` sorted array by alphabetical order`', () => {
     const array1 = [["ABC", "Eli"], ["1", "Perla"], ["TH", "Isabela"]];
     expect(sortByAZMovies(array1)).toEqual([["ABC", "Eli"], ["TH", "Isabela"], ["1", "Perla"]]);
@@ -33,6 +55,7 @@ describe('sortByHR', () => {
   it('is a function', () => {
     expect(typeof sortByHR).toBe('function');
   });
+
   it('returns ` sorted array by rating order`', () =>{
     const array1 = [["ABC", "Eli", "100"], ["1", "Perla", "120"], ["TH", "Isabela", "110"]];
     expect(sortByHR(array1)).toEqual([["1", "Perla", "120"], ["TH", "Isabela", "110"], ["ABC", "Eli", "100"]]);
