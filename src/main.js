@@ -33,8 +33,20 @@ function printMovieCards(allMovies){
         imgMovie.setAttribute("src", allMovies[j][0]);
     
         let elementP = document.createElement("p");
+        let stars = "";
+        if(Number(allMovies[j][2]) < 21){
+            stars = " ★ ";
+        } if(Number(allMovies[j][2]) >= 21 && Number(allMovies[j][2]) <= 40){
+            stars = " ★★ ";
+        } if(Number(allMovies[j][2]) >= 41 && Number(allMovies[j][2]) <= 60){
+            stars = " ★★★ ";
+        }if(Number(allMovies[j][2]) >= 61 && Number(allMovies[j][2]) <= 80){
+            stars = " ★★★★ ";
+        }if(Number(allMovies[j][2]) >= 81){
+            stars = " ★★★★★ ";
+        }
 
-        elementP.innerHTML = "<strong>" + allMovies[j][1] + "</strong>" + "<br>" + "★ Rating: " + allMovies[j][2] + "%";
+        elementP.innerHTML = "<strong>" + allMovies[j][1] + "</strong>" + "<br>" + "<span style='color:#FDCD00; font-size:150%';>" + stars + "</span> <br> Rating: " + allMovies[j][2] + "%";
 
         elementArticle.appendChild(imgMovie);
         elementArticle.appendChild(elementP);

@@ -59,6 +59,7 @@ header p{
 .menu-buttons{ /*Nueva clase para los botones del menú*/
     margin: 1% 0.5%;
     font-size: 18px;
+    font-family: 'Poppins', sans-serif; 
     text-align: center;
     background-color: white;
     border-radius: 15px;
@@ -141,6 +142,10 @@ article{
     background-color: #4545450c;
 }
 
+article:hover, article:focus{ /*PROBAR FOCUS EN EL TELEFONO */
+    border: solid 1.5px #21B0E8;
+}
+
 article img {
     height: 80%;
     display: block;
@@ -151,33 +156,6 @@ article img {
 article p {
     line-height: 1.6em;
     padding: 0.5em 1em 1.5em 0.5em;
-}
-
-#staffList{
-    align-content: center;
-    display: grid;
-    gap: 1rem;
-    grid-auto-rows: auto;
-    grid-template-columns: repeat(auto-fill, minmax(1fr, 2fr));
-}
-
-#staffList article{
-    width: 30%;
-    margin: 5% auto;
-    padding: 2%;
-}
-
-/*#staffList h3 p{
-    padding-left: 10%;
-    /*padding-top: 5%;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}*/
-
-
-#staffList ol {
-    padding-left: 3em;
-    padding-bottom: 1em;
 }
 
 #front-page-img{
