@@ -43,7 +43,7 @@ export const producers = (staff) => {
 
 // Nos devuelve el nombre del director y todas las peliculas en las que ha participado.
 export const directorTitles = (movies, name) => {
-  let directorMovieTitles = [name];
+  let directorMovieTitles = [name, "as director of:"];
 
   for(let j = 0; j < movies.length; j++){
       if(movies[j].director == name){
@@ -56,7 +56,7 @@ export const directorTitles = (movies, name) => {
 
 // Nos devuelve el nombre del productor y todas las peliculas en las que ha participado.
 export const producerTitles = (movies, name) => {
-  let producerMovieTitles = [name];
+  let producerMovieTitles = [name, "as producer of:"];
 
   for(let j = 0; j < movies.length; j++){
       if(movies[j].producer == name){
@@ -67,15 +67,15 @@ export const producerTitles = (movies, name) => {
   return producerMovieTitles;
 };
 
-// Nos devuelve un array ordenado de A a Z, para los titulos de las peliculas.
+// Nos devuelve un array ordenado de A a Z, para los directores y productores.
 export const sortByAZStaff = (staffNames) => {
-  let moviesAZ = staffNames.sort();
-  return moviesAZ;
+  let staffAZ = staffNames.sort(function(a,b){
+    if(a[0] === b[0]){
+      return 0;
+    } if(a[0] < b[0]){
+      return -1;
+    } if(a[0] > b[0]) {
+      return 1;
+    }});
+  return staffAZ;
 };
-
-// Nos devuelve un array ordenado de Z a A, para los titulos de las peliculas.
-export const sortByZAStaff = (staffNames) => {
-  let moviesZA = staffNames.sort();
-  moviesZA.reverse();
-  return moviesZA;
-}
