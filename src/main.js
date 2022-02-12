@@ -1,4 +1,4 @@
-import { movieCards, directors, producers, directorTitles, producerTitles, sortByAZMovies, sortByHR } from './data.js';
+import { movieCards, directors, producers, directorTitles, producerTitles, sortByAZMovies, sortByHR, sortByAZStaff } from './data.js';
 
 import data from './data/ghibli/ghibli.js';
 
@@ -17,14 +17,16 @@ btnMovies.addEventListener("click", function(){ displaySections(sectionStaff, se
 let btnStaff = document.getElementById("btnStaff");
 btnStaff.addEventListener("click", function(){ displaySections(sectionMovies, sectionStaff)});
 
-// MOSTRAR PELICULAS
+// SECCIÓN DE PELÍCULAS -----------------------------------------------------------------------
 let allMovies = []; 
 
+// Crea un array bidimensional, contiene arrays con elementos: poster, título y rating de película.
 for(let i = 0; i < data.films.length; i++){ 
     allMovies.push(movieCards(data.films[i]));
 }
 
-function printMovieCards(allMovies){
+// Crea e imprime tarjetas (artículos) en la sección movieList del HTML.
+function printMovieCards(){
     document.getElementById("movieList").innerHTML = "";
     for(let j = 0; j < allMovies.length; j++){
         let elementArticle = document.createElement("article");
@@ -33,8 +35,20 @@ function printMovieCards(allMovies){
         imgMovie.setAttribute("src", allMovies[j][0]);
     
         let elementP = document.createElement("p");
+        let stars = "";
+        if(Number(allMovies[j][2]) < 21){
+            stars = " ★ ";
+        } if(Number(allMovies[j][2]) >= 21 && Number(allMovies[j][2]) <= 40){
+            stars = " ★★ ";
+        } if(Number(allMovies[j][2]) >= 41 && Number(allMovies[j][2]) <= 60){
+            stars = " ★★★ ";
+        }if(Number(allMovies[j][2]) >= 61 && Number(allMovies[j][2]) <= 80){
+            stars = " ★★★★ ";
+        }if(Number(allMovies[j][2]) >= 81){
+            stars = " ★★★★★ ";
+        }
 
-        elementP.innerHTML = "<strong>" + allMovies[j][1] + "</strong>" + "<br>" + "★ Rating: " + allMovies[j][2] + "%";
+        elementP.innerHTML = "<strong>" + allMovies[j][1] + "</strong>" + "<br>" + "<span style='color:#FDCD00; font-size:150%';>" + stars + "</span> <br> Rating: " + allMovies[j][2] + "%";
 
         elementArticle.appendChild(imgMovie);
         elementArticle.appendChild(elementP);
@@ -43,7 +57,8 @@ function printMovieCards(allMovies){
     }
 }
 
-printMovieCards(allMovies);
+printMovieCards(); // Imprime películas
+
 //FUNCIONALIDAD DEL FILTRO DE SORT BY EN LA SECCIÓN DE MOVIES
 //Llama al elemento select de la sección de Movies y lo guarda en una variable
 const selectSortMovies = document.querySelector("#selectSortMovies");
@@ -69,7 +84,7 @@ const selectedSort = () => {
 //Agrega el evento a ejecutar cuando haya un cambio en el select
 selectSortMovies.addEventListener("change", selectedSort);
 
-// MOSTRAR DIRECTORES Y PRODUCTORES
+// SECCIÓN DE DIRECTORES Y PRODUCTORES -------------------------------------------------------------
 //Obtener una lista con los nombres de todos los directores y productores
 let people = [];
 
@@ -90,25 +105,6 @@ for(let i = 0; i < nameList.length; i++){
     directorTitlesArray.push(directorTitles(data.films, nameList[i]));
 }
 
-//Imprimir las tarjetas para cada nombre de DIRECTOR
-for(let j = 0; j < directorTitlesArray.length; j++){
-    let elementArticle = document.createElement("article");
-    elementArticle.innerHTML = "<h3>" + directorTitlesArray[j][0] + "</h3>" + "<p> As director of: </p>";
-
-    let elementOl = document.createElement("ol");
-
-    for(let i = 1; i < directorTitlesArray[j].length; i++){
-        if(directorTitlesArray[j][i].length > 0){
-            let elementLi = document.createElement("li");
-            elementLi.innerHTML =  directorTitlesArray[j][i];
-            elementOl.appendChild(elementLi);
-        } 
-        elementArticle.appendChild(elementOl);
-
-        document.getElementById("staffList").appendChild(elementArticle);
-    }
-}
-
 //Saca un array con los titulos de las peliculas donde participó cada productor
 let producerTitlesArray = [];
 
@@ -116,21 +112,60 @@ for(let i = 0; i < nameList.length; i++){
     producerTitlesArray.push(producerTitles(data.films, nameList[i]));
 }
 
-//Imprimir las tarjetas para cada nombre de PRODUCTOR
-for(let j = 0; j < producerTitlesArray.length; j++){
-    let elementArticle = document.createElement("article");
-    elementArticle.innerHTML = "<h3>" + producerTitlesArray[j][0] + "</h3>" + "<p> As producer of: </p>";
+let staff = directorTitlesArray.concat(producerTitlesArray);
+console.log(staff);
 
-    let elementOl = document.createElement("ol");
+function printStaff(staff){
+    document.getElementById("staffList").innerHTML = "";
+    for(let j = 0; j < staff.length; j++){
+        let elementArticle = document.createElement("article");
+        elementArticle.innerHTML = "<h3>" + staff[j][0] + "</h3> <p>" + staff[j][1] + "</p>";
 
-    for(let i = 1; i < producerTitlesArray[j].length; i++){
-        if(producerTitlesArray[j][i].length > 0){
-            let elementLi = document.createElement("li");
-            elementLi.innerHTML =  producerTitlesArray[j][i];
-            elementOl.appendChild(elementLi);
-        } 
+        let elementOl = document.createElement("ol");
+
+        for(let i = 2; i < staff[j].length; i++){
+            if(staff[j][i].length > 0){
+                let elementLi = document.createElement("li");
+                elementLi.innerHTML =  staff[j][i];
+                elementOl.appendChild(elementLi);
+            } 
         elementArticle.appendChild(elementOl);
 
         document.getElementById("staffList").appendChild(elementArticle);
+        }
     }
 }
+
+printStaff(staff);
+
+// Filtro directorxs o productorxs
+function filterByDir(){
+    printStaff(directorTitlesArray);
+}
+
+function filterByProd(){
+    printStaff(producerTitlesArray);
+}
+
+let btnDirectors = document.getElementById("directorRadio");
+btnDirectors.addEventListener("click", filterByDir);
+
+let btnProducers = document.getElementById("producerRadio");
+btnProducers.addEventListener("click", filterByProd);
+
+// Sort by en sección de staff
+const selectSortStaff = document.querySelector("#selectSortStaff");
+
+const selectedSortStaff = () => {
+    const selectedOption = selectSortStaff.selectedIndex; 
+    if (selectedOption === 1){ //Para la primera opción
+        let staffAZ = sortByAZStaff(staff);
+        printStaff(staffAZ);    
+    } if (selectedOption === 2){
+        let staffZA = sortByAZStaff(staff).reverse();
+        console.log(staffZA);
+        printStaff(staffZA);
+    } 
+}
+
+selectSortStaff.addEventListener("change", selectedSortStaff);
