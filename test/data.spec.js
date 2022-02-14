@@ -1,6 +1,6 @@
 import { describe, it } from 'eslint/lib/rule-tester/rule-tester';
 
-import { movieCards, sortByAZMovies, sortByHR } from '../src/data.js';
+import { movieCards, sortByAZMovies, sortByHR, directors, producers, directorTitles, producerTitles, sortByAZStaff } from '../src/data.js';
 
 describe('movieCards', () => {
   it('is a function', () => {
@@ -28,28 +28,11 @@ describe('sortByAZMovies', () => {
 
   });
   it('returns ` sorted array by alphabetical order`', () => {
-    const array1 = [["ABC", "Eli"], ["1", "Perla"], ["TH", "Isabela"]];
-    expect(sortByAZMovies(array1)).toEqual([["ABC", "Eli"], ["TH", "Isabela"], ["1", "Perla"]]);
-
+    const array1 = [["ABC", "Eli"], ["1", "Perla"], ["TH", "Isabela"], ["Yes", "Perla"]];
+    expect(sortByAZMovies(array1)).toEqual([["ABC", "Eli"], ["TH", "Isabela"], ["1", "Perla"], ["Yes", "Perla"]]);
   });
 });
 
-
-describe('sortByHR', () => {
-  it('is a function', () => {
-    expect(typeof sortByHR).toBe('function');
-  });
-  it('returns ` sorted array by rating order`', () =>{
-    const array1 = [["ABC", "Eli", "100"], ["1", "Perla", "120"], ["TH", "Isabela", "110"]];
-    expect(sortByHR(array1)).toEqual([["1", "Perla", "120"], ["TH", "Isabela", "110"], ["ABC", "Eli", "100"]]);
-  });
-});
-
-  it('returns ` sorted array by alphabetical order`', () => {
-    const array1 = [["ABC", "Eli"], ["1", "Perla"], ["TH", "Isabela"]];
-    expect(sortByAZMovies(array1)).toEqual([["ABC", "Eli"], ["TH", "Isabela"], ["1", "Perla"]]);
-  });
-});
 
 describe('sortByHR', () => {
   it('is a function', () => {
@@ -59,5 +42,104 @@ describe('sortByHR', () => {
   it('returns ` sorted array by rating order`', () =>{
     const array1 = [["ABC", "Eli", "100"], ["1", "Perla", "120"], ["TH", "Isabela", "110"]];
     expect(sortByHR(array1)).toEqual([["1", "Perla", "120"], ["TH", "Isabela", "110"], ["ABC", "Eli", "100"]]);
+  });
+});
+
+describe('directors', () => {
+  it('is a function', () => {
+    expect(typeof directors).toBe('function');
+  });
+
+  it('returns ` directors names `', () =>{
+    const names = {
+     "director": "Orlando",
+     "producer": "Jaime",
+     "photographer": "Maria"
+    };
+    expect(directors(names)).toBe("Orlando");
+  });
+});
+
+describe('producers', () => {
+  it('is a function', () => {
+    expect(typeof producers).toBe('function');
+  });
+
+  it('returns ` producers names `', () =>{
+    const names = {
+     "director": "Orlando",
+     "producer": "Jaime",
+     "photographer": "Maria"
+    };
+    expect(producers(names)).toBe("Jaime");
+  });
+});
+
+describe('directorTitles', () => {
+  it('is a function', () => {
+    expect(typeof directorTitles).toBe('function');
+  });
+
+  it('returns ` array with director name, "as director of:", and movie titles `', () =>{
+    let name = "Orlando";
+    const movies = [{
+     "director": "Orlando",
+     "producer": "Jaime",
+     "photographer": "Maria",
+     "title": "Titanic"
+    },
+    {
+      "director": "Juan",
+      "producer": "Jaime",
+      "photographer": "Maria",
+      "title": "Titanic 2"
+    },
+    {
+      "director": "Orlando",
+      "producer": "Jaime",
+      "photographer": "Maria",
+      "title": "Jurassic Park"
+    }];
+    expect(directorTitles(movies, name)).toEqual(["Orlando", "as director of:", "Titanic", "Jurassic Park"]);
+  });
+});
+
+describe('producerTitles', () => {
+  it('is a function', () => {
+    expect(typeof producerTitles).toBe('function');
+  });
+
+  it('returns ` array with producer name, "as producer of:", and movie titles `', () =>{
+    const name = "Jaime";
+    const movies = [{
+     "director": "Orlando",
+     "producer": "Jaime",
+     "photographer": "Maria",
+     "title": "Titanic"
+    },
+    {
+      "director": "Juan",
+      "producer": "Jaime",
+      "photographer": "Maria",
+      "title": "Titanic 2"
+    },
+    {
+      "director": "Orlando",
+      "producer": "Jaime",
+      "photographer": "Maria",
+      "title": "Jurassic Park"
+    }];
+    expect(producerTitles(movies, name)).toEqual(["Jaime", "as producer of:", "Titanic", "Titanic 2", "Jurassic Park"]);
+  });
+});
+
+describe('sortByAZStaff', () => {
+  it('is a function', () => {
+    expect(typeof sortByAZStaff).toBe('function');
+  });
+
+  it('returns ` sorted array by alphabetical order `', () =>{
+    const array1 = [["Orlando", "as director of:", "Titanic", "Totoro"], ["Jaime", "as producer of:", "Titanic", "Titanic 2", "Jurassic Park"], ["Maria", "as director of:", "Jurassic Park", "Nemo"], ["Maria", "as producer of:", "Encanto", "Luca"]]
+    expect(sortByAZStaff(array1)).toEqual([["Jaime", "as producer of:", "Titanic", "Titanic 2", "Jurassic Park"], ["Maria", "as director of:", "Jurassic Park", "Nemo"], ["Maria", "as producer of:", "Encanto", "Luca"], ["Orlando", "as director of:", "Titanic", "Totoro"]]);
   });
 });
