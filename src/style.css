@@ -2,7 +2,6 @@ body{
     font-family: 'Poppins', sans-serif; 
     margin: 0; 
     color: #454545;
-    
 }
 
 .staff-content {
@@ -29,7 +28,7 @@ button{
     background-color: white;
     padding: 14px 17px;
     border-radius: 15px;
-    border: 2px solid #454545;
+    border: 1.7px solid #454545;
     cursor: pointer; 
 }   
 
@@ -74,7 +73,6 @@ header p{
     border: 2px solid white;
     color: white;
     background-color: #0095EA;
-    
 }
 
 
@@ -96,6 +94,21 @@ h2{
 
 main {
     margin: auto 10%;
+}
+
+/*Sección de estilos especiales para el teléfono*/
+@media (max-width: 480px) {
+    nav{
+        margin: 0 5%;
+    }
+
+    main {
+        margin: auto 5%;
+    }
+
+    #movieList {
+    grid-template-columns: 2;
+    }
 }
 
 .sort {
@@ -178,13 +191,43 @@ article p {
     right: 0%;
     bottom: 0%;
     float: right;
-    /*border: 2pt solid rgb(24, 233, 76);*/
+    z-index: 1;
 }
 
 footer {
     background-color: rgba(0, 149, 234, 0.22);
-    height: 3.5em;
     width: 100%;
     position: relative;
     margin-top: 10%;
+    text-align: center;
+
+}
+
+footer p {
+    padding: 0.7em;
+    margin-block-end: 0;
+}
+
+footer a:link{
+    color: #004166;
+}
+
+footer a:visited{
+    color: #454545
+}
+
+/*Botón ir arriba*/
+.go-up{
+    cursor:pointer;
+	position: fixed;
+	bottom:20px;
+	right:20px;
+    z-index: 2;
+    color: #454545;
+}
+
+.go-up:hover{
+    border: 2px solid white;
+    color: white;
+    background-color: #0095EA;
 }

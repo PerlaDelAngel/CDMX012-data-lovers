@@ -15,9 +15,9 @@ export const sortByAZMovies = (movieTitles) => {
       return 0;
     } if(a[1] < b[1]){
       return -1;
-    } if(a[1] > b[1]) {
+    }/* if(a[1] > b[1]) {
       return 1;
-    }});
+    }*/});
   return moviesAZ;
 };
 
@@ -74,8 +74,8 @@ export const sortByAZStaff = (staffNames) => {
       return 0;
     } if(a[0] < b[0]){
       return -1;
-    } if(a[0] > b[0]) {
+    }/* if(a[0] > b[0]) {
       return 1;
-    }});
+    }*/});
   return staffAZ;
 };

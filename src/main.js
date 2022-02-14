@@ -113,7 +113,7 @@ for(let i = 0; i < nameList.length; i++){
 }
 
 let staff = directorTitlesArray.concat(producerTitlesArray);
-console.log(staff);
+//console.log(staff);
 
 function printStaff(staff){
     document.getElementById("staffList").innerHTML = "";
@@ -147,7 +147,7 @@ function filterByProd(){
     printStaff(producerTitlesArray);
 }
 
-let btnDirectors = document.getElementById("directorRadio");
+let btnDirectors = document.querySelector("#directorRadio");
 btnDirectors.addEventListener("click", filterByDir);
 
 let btnProducers = document.getElementById("producerRadio");
@@ -156,16 +156,42 @@ btnProducers.addEventListener("click", filterByProd);
 // Sort by en sección de staff
 const selectSortStaff = document.querySelector("#selectSortStaff");
 
-const selectedSortStaff = () => {
-    const selectedOption = selectSortStaff.selectedIndex; 
-    if (selectedOption === 1){ //Para la primera opción
-        let staffAZ = sortByAZStaff(staff);
-        printStaff(staffAZ);    
-    } if (selectedOption === 2){
-        let staffZA = sortByAZStaff(staff).reverse();
-        console.log(staffZA);
-        printStaff(staffZA);
-    } 
+const selectedSortStaff = () => { // JALE CON EL RADIO BUTTON
+    const selectedOption = selectSortStaff.selectedIndex;
+    // BORRE EL SELECT
+    //Funcionalidad de filter y sort al mismo tiempo
+    if (btnDirectors.checked){
+        // PRINT DIRECTORS ARRAY
+        if (selectedOption === 1){
+            let directorsAZ = sortByAZStaff(directorTitlesArray);
+            printStaff(directorsAZ);
+        } else if (selectedOption === 2){
+            let directorsZA = sortByAZStaff(directorTitlesArray).reverse();
+            printStaff(directorsZA);
+        }
+    } else if (btnProducers.checked){
+        // PRINT PRODUCERS ARRAY
+        if (selectedOption === 1){
+            let producersAZ = sortByAZStaff(producerTitlesArray);
+            printStaff(producersAZ);
+        } else if (selectedOption === 2){
+            let producersZA = sortByAZStaff(producerTitlesArray).reverse();
+            printStaff(producersZA);
+        }
+    } else { 
+        if (selectedOption === 1){
+            let staffAZ = sortByAZStaff(staff);
+            printStaff(staffAZ); 
+        } else if (selectedOption === 2){
+            let staffZA = sortByAZStaff(staff).reverse();
+            printStaff(staffZA); 
+        }
+    }
 }
 
 selectSortStaff.addEventListener("change", selectedSortStaff);
+
+//Botón para subir hasta el principio de la página 
+document.getElementById("button-up").addEventListener("click", () => {
+    window.scrollTo(0,0);
+})
