@@ -44,25 +44,43 @@ export const producers = (staff) => {
 // Nos devuelve el nombre del director y todas las peliculas en las que ha participado.
 export const directorTitles = (movies, name) => {
   let directorMovieTitles = [name, "as director of:"];
+  let directorMovieRatings = [0];
 
   for(let j = 0; j < movies.length; j++){
       if(movies[j].director == name){
         directorMovieTitles.push(movies[j].title);
+        directorMovieRatings.push(Number(movies[j].rt_score));
       }
   }
 
+  let numMovies = directorMovieRatings.length-1;
+  let averageRatings = parseInt((directorMovieRatings.reduce((a,b) => {
+    return a + b;
+  }))/numMovies);
+
+  directorMovieTitles.push(averageRatings)
   return directorMovieTitles;
 };
+
 
 // Nos devuelve el nombre del productor y todas las peliculas en las que ha participado.
 export const producerTitles = (movies, name) => {
   let producerMovieTitles = [name, "as producer of:"];
+  let producerMovieRatings = [0];
 
   for(let j = 0; j < movies.length; j++){
       if(movies[j].producer == name){
         producerMovieTitles.push(movies[j].title);
+        producerMovieRatings.push(Number(movies[j].rt_score));
       }
   }
+
+  let numMovies = producerMovieRatings.length-1;
+  let averageRatings = parseInt((producerMovieRatings.reduce((a,b) => {
+    return a + b;
+  }))/numMovies);
+
+  producerMovieTitles.push(averageRatings)
 
   return producerMovieTitles;
 };
@@ -79,3 +97,4 @@ export const sortByAZStaff = (staffNames) => {
     }*/});
   return staffAZ;
 };
+

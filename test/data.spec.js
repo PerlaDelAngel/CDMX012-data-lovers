@@ -80,27 +80,30 @@ describe('directorTitles', () => {
     expect(typeof directorTitles).toBe('function');
   });
 
-  it('returns ` array with director name, "as director of:", and movie titles `', () =>{
+  it('returns ` array with director name, "as director of:", movie titles, and average rating `', () =>{
     let name = "Orlando";
     const movies = [{
      "director": "Orlando",
      "producer": "Jaime",
      "photographer": "Maria",
-     "title": "Titanic"
+     "title": "Titanic",
+     "rt_score": 90
     },
     {
       "director": "Juan",
       "producer": "Jaime",
       "photographer": "Maria",
-      "title": "Titanic 2"
+      "title": "Titanic 2",
+      "rt_score": 98
     },
     {
       "director": "Orlando",
       "producer": "Jaime",
       "photographer": "Maria",
-      "title": "Jurassic Park"
+      "title": "Jurassic Park",
+      "rt_score": 85
     }];
-    expect(directorTitles(movies, name)).toEqual(["Orlando", "as director of:", "Titanic", "Jurassic Park"]);
+    expect(directorTitles(movies, name)).toEqual(["Orlando", "as director of:", "Titanic", "Jurassic Park", 87]);
   });
 });
 
@@ -109,27 +112,30 @@ describe('producerTitles', () => {
     expect(typeof producerTitles).toBe('function');
   });
 
-  it('returns ` array with producer name, "as producer of:", and movie titles `', () =>{
+  it('returns ` array with producer name, "as producer of:", movie titles, and average rating `', () =>{
     const name = "Jaime";
     const movies = [{
      "director": "Orlando",
      "producer": "Jaime",
      "photographer": "Maria",
-     "title": "Titanic"
+     "title": "Titanic",
+     "rt_score": 60
     },
     {
       "director": "Juan",
       "producer": "Jaime",
       "photographer": "Maria",
-      "title": "Titanic 2"
+      "title": "Titanic 2",
+      "rt_score": 96
     },
     {
       "director": "Orlando",
       "producer": "Jaime",
       "photographer": "Maria",
-      "title": "Jurassic Park"
+      "title": "Jurassic Park",
+      "rt_score": 75
     }];
-    expect(producerTitles(movies, name)).toEqual(["Jaime", "as producer of:", "Titanic", "Titanic 2", "Jurassic Park"]);
+    expect(producerTitles(movies, name)).toEqual(["Jaime", "as producer of:", "Titanic", "Titanic 2", "Jurassic Park", 77]);
   });
 });
 
