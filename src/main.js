@@ -139,7 +139,73 @@ function printStaff(staff){
 
 printStaff(staff);
 
-// Filtro directorxs o productorxs
+let btnAll = document.querySelector("#allRadio");
+btnAll.addEventListener("click", filter);
+
+let btnDirectors = document.querySelector("#directorRadio");
+btnDirectors.addEventListener("click", filter);
+
+let btnProducers = document.getElementById("producerRadio");
+btnProducers.addEventListener("click", filter);
+
+const selectSortStaff = document.querySelector("#selectSortStaff");
+
+let c = 1;
+function filter() {
+    if(btnAll.checked){
+        c = 1;
+        selectSortStaff.selectedIndex = 0;
+        printStaff(staff);
+        console.log(c)
+    }
+    if(btnDirectors.checked){
+        c = 2;
+        selectSortStaff.selectedIndex = 0;
+        printStaff(directorTitlesArray);
+        console.log(c)
+    }
+    if(btnProducers.checked){
+        c = 3;
+        selectSortStaff.selectedIndex = 0;
+        printStaff(producerTitlesArray);
+        console.log(c)
+    }
+}
+
+function sort(){
+    const selectedOption = selectSortStaff.selectedIndex; // tiene q ir adentro pq si no no funciona
+    if (c === 1){
+        if (selectedOption === 1){
+            let staffAZ = sortByAZStaff(staff);
+            printStaff(staffAZ);
+        } else if (selectedOption === 2){
+            let staffZA = sortByAZStaff(staff).reverse();
+            printStaff(staffZA);
+        }
+    }
+    if (c === 2){
+        if (selectedOption === 1){
+            let staffAZ = sortByAZStaff(directorTitlesArray);
+            printStaff(staffAZ);
+        } else if (selectedOption === 2){
+            let staffZA = sortByAZStaff(directorTitlesArray).reverse();
+            printStaff(staffZA);
+        }
+    }
+    if (c === 3){
+        if (selectedOption === 1){
+            let staffAZ = sortByAZStaff(producerTitlesArray);
+            printStaff(staffAZ);
+        } else if (selectedOption === 2){
+            let staffZA = sortByAZStaff(producerTitlesArray).reverse();
+            printStaff(staffZA);
+        }
+    }
+}
+
+selectSortStaff.addEventListener("change", sort);
+
+/* Filtro directorxs o productorxs
 function filterByDir(){
     printStaff(directorTitlesArray);
 }
@@ -161,6 +227,7 @@ const selectedSortStaff = () => { // JALE CON EL RADIO BUTTON
     const selectedOption = selectSortStaff.selectedIndex;
     // BORRE EL SELECT
     //Funcionalidad de filter y sort al mismo tiempo
+
     if (btnDirectors.checked){
         // PRINT DIRECTORS ARRAY
         if (selectedOption === 1){
@@ -191,8 +258,8 @@ const selectedSortStaff = () => { // JALE CON EL RADIO BUTTON
 }
 
 selectSortStaff.addEventListener("change", selectedSortStaff);
-
+*/
 //Botón para subir hasta el principio de la página 
 document.getElementById("button-up").addEventListener("click", () => {
     window.scrollTo(0,0);
-})
+}) 
