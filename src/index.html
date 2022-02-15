@@ -41,18 +41,22 @@
 
         <main class="staff-content" id="staff-content">
             <h2>DIRECTORS AND PRODUCERS</h2>
-            <p> Filter by: </p> 
-            <input type="radio" id="directorRadio" name="staffRadio">
-            <label for="directorRadio">Directors</label>
-            <input type="radio" id="producerRadio" name="staffRadio">
-            <label for="producerRadio">Producers</label>
 
-            <section class="sort">
-                <select id="selectSortStaff">
-                    <option disabled selected>Sort by</option>
-                    <option>A-Z</option>
-                    <option>Z-A</option>
-                </select>
+            <section class="filter-and-sort">
+                <section class="staffFilter">
+                    <p> Filter by: </p> 
+                    <input type="radio" id="directorRadio" name="staffRadio">
+                    <label for="directorRadio">Directors</label>
+                    <input type="radio" id="producerRadio" name="staffRadio">
+                    <label for="producerRadio">Producers</label>
+                </section>   
+                <section class="sort"> 
+                    <select id="selectSortStaff" >
+                        <option disabled selected>Sort by</option>
+                        <option>A-Z</option>
+                        <option>Z-A</option>
+                    </select>
+                </section>
             </section>
             <section id="staffList"></section>
         </main>

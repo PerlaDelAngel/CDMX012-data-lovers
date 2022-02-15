@@ -75,11 +75,25 @@ header p{
     background-color: #0095EA;
 }
 
-
 h2{
     text-align: center;
     font-weight: 600;
-    font-size: 45px;
+    font-size: 40px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.2em;
+    border-top: solid 2px #0095EA;
+    border-bottom: solid 2px #0095EA;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+/*h2{
+    text-align: center;
+    font-weight: 600;
+    font-size: 40px;
     line-height: 90px;
     letter-spacing: 0.2em;
     border-top: solid 2px #0095EA;
@@ -90,7 +104,7 @@ h2{
     margin-left: 15%;
     margin-right: 15%;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-}
+}*/
 
 main {
     margin: auto 10%;
@@ -113,6 +127,7 @@ main {
 
 .sort {
     text-align: right;
+    font-family: 'Poppins', sans-serif;
 }
 
 .sort select {
@@ -173,6 +188,15 @@ article p {
     line-height: 1.6em;
     padding: 0.5em 1em 1.5em 0.5em;
 }
+
+.filter-and-sort p{
+    display: inline-block;
+}
+
+.staffFilter{
+    display: inline-block;
+}
+
 
 #staffList {
     display: flex;

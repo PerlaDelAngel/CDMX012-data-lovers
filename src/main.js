@@ -66,6 +66,7 @@ const selectSortMovies = document.querySelector("#selectSortMovies");
 //Es la función de lo que se va a hacer según el elemento que se selccione en el Select
 const selectedSort = () => {
     const selectedOption = selectSortMovies.selectedIndex; 
+    
     if (selectedOption === 1){ //Para la primera opción
         let allMoviesAZ = sortByAZMovies(allMovies);
         printMovieCards(allMoviesAZ);
