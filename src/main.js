@@ -1,4 +1,4 @@
-import { movieCards, directors, producers, directorTitles, producerTitles, sortByAZMovies, sortByHR, sortByAZStaff } from './data.js';
+import { movieCards, directors, producers, directorTitles, producerTitles, sortByAZMovies, sortByHR, sortByAZStaff, sortByHRStaff } from './data.js';
 
 import data from './data/ghibli/ghibli.js';
 
@@ -187,27 +187,45 @@ function sort(){
         if (selectedOption === 1){
             let staffAZ = sortByAZStaff(staffModif);
             printStaff(staffAZ);
-        } else if (selectedOption === 2){
+        } if (selectedOption === 2){
             let staffZA = sortByAZStaff(staffModif).reverse();
             printStaff(staffZA);
+        } if (selectedOption === 3){
+            let staffHR = sortByHRStaff(staffModif);
+            printStaff(staffHR);
+        } if (selectedOption === 4){
+            let staffLR = sortByHRStaff(staffModif).reverse();
+            printStaff(staffLR);
         }
     }
     if (c === 2){
         if (selectedOption === 1){
             let staffAZ = sortByAZStaff(directorTitlesArrayModif);
             printStaff(staffAZ);
-        } else if (selectedOption === 2){
+        } if (selectedOption === 2){
             let staffZA = sortByAZStaff(directorTitlesArrayModif).reverse();
             printStaff(staffZA);
+        } if (selectedOption === 3){
+            let staffHR = sortByHRStaff(directorTitlesArrayModif);
+            printStaff(staffHR);
+        } if (selectedOption === 4){
+            let staffLR = sortByHRStaff(directorTitlesArrayModif).reverse();
+            printStaff(staffLR);
         }
     }
     if (c === 3){
         if (selectedOption === 1){
             let staffAZ = sortByAZStaff(producerTitlesArrayModif);
             printStaff(staffAZ);
-        } else if (selectedOption === 2){
+        } if (selectedOption === 2){
             let staffZA = sortByAZStaff(producerTitlesArrayModif).reverse();
             printStaff(staffZA);
+        } if (selectedOption === 3){
+            let staffHR = sortByHRStaff(producerTitlesArrayModif);
+            printStaff(staffHR);
+        } if (selectedOption === 4){
+            let staffLR = sortByHRStaff(producerTitlesArrayModif).reverse();
+            printStaff(staffLR);
         }
     }
 }
