@@ -1,6 +1,6 @@
 // Nos devuelve un array con poster, titulo y rating de una pelicula.
 export const movieCards = (movies) => {
-  let movie = [movies.poster, movies.title, movies.rt_score];
+  let movie = [movies.poster, movies.title, movies.rt_score, movies.id];
   return movie;
 };
 

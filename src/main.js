@@ -30,6 +30,7 @@ function printMovieCards(){
     document.getElementById("movieList").innerHTML = "";
     for(let j = 0; j < allMovies.length; j++){
         let elementArticle = document.createElement("article");
+        elementArticle.setAttribute("id", allMovies[j][3]);
 
         let imgMovie = document.createElement("img");
         imgMovie.setAttribute("src", allMovies[j][0]);
@@ -84,6 +85,15 @@ const selectedSort = () => {
 
 //Agrega el evento a ejecutar cuando haya un cambio en el select
 selectSortMovies.addEventListener("change", selectedSort);
+
+//SECCIÓN PARA IMPRIMIR INFORMACIÓN DE CADA PELÍCULA
+// 1. Escucha cuando el usuario le pique a una tarjeta (addEventListener y id de la tarjeta).
+// 2. Obten la info de esa tarjeta (data). => busca el id en data.films y jala la informacion.
+// 3. Corre una funcion que imprima la info de la tarjeta (main).
+
+function movieInfo (){
+
+}
 
 // SECCIÓN DE DIRECTORES Y PRODUCTORES -------------------------------------------------------------
 //Obtener una lista con los nombres de todos los directores y productores
