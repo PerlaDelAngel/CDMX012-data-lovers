@@ -158,7 +158,7 @@ article{
     border-radius: 15px;
     text-align: left;
     box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.05);
-    height: 85%;
+    /*height: 85%;*/
     background-color: #4545450c;
 }
 
@@ -175,7 +175,7 @@ article img {
 
 article p {
     line-height: 1.6em;
-    padding: 0.5em 1em 1.5em 0.5em;
+    padding: 0.5em 1em 0em 0.5em;
     text-align: center;
 }
 
@@ -203,7 +203,7 @@ article p {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: stretch;
 }
 
 #staffList article {
