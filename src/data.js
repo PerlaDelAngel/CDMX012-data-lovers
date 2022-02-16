@@ -92,9 +92,16 @@ export const sortByAZStaff = (staffNames) => {
       return 0;
     } if(a[0] < b[0]){
       return -1;
-    }/* if(a[0] > b[0]) {
-      return 1;
-    }*/});
+    }});
   return staffAZ;
 };
 
+// Nos devuelve un array ordenado de mayor a menor, para lxs directorxs y productorxs.
+export const sortByHRStaff = (staff) => {
+  let clearStaff = staff.filter((arrayStaff) => arrayStaff.length > 3)
+
+  let staffHR = clearStaff.sort(function(a, b){
+      return b[(b.length)-1] - a[(a.length)-1];
+    });
+  return staffHR;
+}
