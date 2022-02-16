@@ -137,7 +137,7 @@ function printStaff(staff){
     for(let j = 0; j < staff.length; j++){
         if (staff[j].length > 3){
             let elementArticle = document.createElement("article");
-            elementArticle.innerHTML = "<h3>" + staff[j][0] + "</h3> <br>" + staff[j][1];
+            elementArticle.innerHTML = "<h3>" + staff[j][0] + "</h3> <span style='font-size:90%;'>" + staff[j][1] + "</span>";
 
             let elementOl = document.createElement("ol");
 
@@ -151,7 +151,7 @@ function printStaff(staff){
             }
 
             let elementP = document.createElement("p");
-            elementP.innerHTML = "Average Rating: <span style='color:#FDCD00; font-size:150%';> ★ </span>" + staff[j][(staff[j].length)-1] + "%";
+            elementP.innerHTML = "<strong><span style='color:#FDCD00; font-size:150%';> ★ </span>Average Rating: " + staff[j][(staff[j].length)-1] + "%</strong>";
             elementArticle.appendChild(elementP);
             
             document.getElementById("staffList").appendChild(elementArticle);
