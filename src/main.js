@@ -11,16 +11,15 @@ function displaySections(hideSection, showSection){
     showSection.style.display = "block";
 }
 
-let btnMovies = document.getElementById("btnMovies"); 
-btnMovies.addEventListener("click", function(){ displaySections(sectionStaff, sectionMovies)});
+document.getElementById("btnMovies").addEventListener("click", ()=>{displaySections(sectionStaff, sectionMovies)});
 
-let btnStaff = document.getElementById("btnStaff");
-btnStaff.addEventListener("click", function(){ displaySections(sectionMovies, sectionStaff)});
+document.getElementById("btnStaff").addEventListener("click", ()=>{ displaySections(sectionMovies, sectionStaff)});
 
 // SECCIÓN DE PELÍCULAS -----------------------------------------------------------------------
+//Array bidimensional donde se van a guardar las películas con su poster, título, rating y id.
 let allMovies = []; 
 
-// Crea un array bidimensional, contiene arrays con elementos: poster, título y rating de película.
+// Le agrega al array anterior los datos obtenidos de data.films.
 for(let i = 0; i < data.films.length; i++){ 
     allMovies.push(movieCards(data.films[i]));
 }
@@ -36,6 +35,7 @@ function printMovieCards(){
         imgMovie.setAttribute("src", allMovies[j][0]);
     
         let elementP = document.createElement("p");
+
         let stars = "";
         if(Number(allMovies[j][2]) < 21){
             stars = " ★ ";
@@ -69,17 +69,13 @@ const selectedSort = () => {
     const selectedOption = selectSortMovies.selectedIndex; 
     
     if (selectedOption === 1){ //Para la primera opción
-        let allMoviesAZ = sortByAZMovies(allMovies);
-        printMovieCards(allMoviesAZ);
+        printMovieCards(sortByAZMovies(allMovies));
     } if (selectedOption === 2){
-        let allMoviesZA = sortByAZMovies(allMovies).reverse();
-        printMovieCards(allMoviesZA);
+        printMovieCards(sortByAZMovies(allMovies).reverse());
     } if (selectedOption === 3){
-        let allMoviesHR = sortByHR(allMovies);
-        printMovieCards(allMoviesHR);
+        printMovieCards(sortByHR(allMovies));
     } if (selectedOption === 4) {
-        let allMoviesLR = sortByHR(allMovies).reverse();
-        printMovieCards(allMoviesLR);
+        printMovieCards(sortByHR(allMovies).reverse());
     }
 }
 

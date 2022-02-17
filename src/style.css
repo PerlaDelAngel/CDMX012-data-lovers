@@ -9,21 +9,17 @@ body{
 }
 
 nav{
-    margin: 0 10%;
+    margin: 1em 10%;
     padding: 0;
     overflow: hidden;
-    background-color: white;
-    height: auto;
-}
-
-.nav-logo{
-    float: left;
-    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 button{
-    margin-top: 2%;
-    font-size: 18px;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif; 
     text-align: center;
     background-color: white;
     padding: 14px 17px;
@@ -31,10 +27,6 @@ button{
     border: 1.7px solid #454545;
     cursor: pointer; 
 }   
-
-.nav-buttons{ 
-    float: right;
-}
 
 header{
     text-align: center;
@@ -55,26 +47,23 @@ header p{
     margin-bottom: 2%;
 }
 
-.menu-buttons{ /*Nueva clase para los botones del menú*/
+.menu-buttons{ /*Clase para los botones del menú*/
     margin: 1% 0.5%;
     font-size: 18px;
-    font-family: 'Poppins', sans-serif; 
     text-align: center;
-    background-color: white;
-    border-radius: 15px;
     border: 2px solid #0095EA;
-    cursor: pointer;
     width: 20%;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     font-weight: 300;
 }
 
-.menu-buttons:hover{ /*Para insertar la imagen cuando el user pasa el mouse*/
+.menu-buttons:hover, .menu-buttons:focus{ /*Para insertar la imagen cuando el user pasa el mouse*/
     border: 2px solid white;
     color: white;
     background-color: #0095EA;
 }
 
+/*SECCIÓN MOVIES*/
 h2{
     text-align: center;
     font-weight: 600;
@@ -91,37 +80,27 @@ h2{
 }
 
 main {
-    margin: auto 10%;
+    margin: auto 5%;
 }
 
-/*Sección de estilos especiales para el teléfono*/
-@media (max-width: 480px) {
-    nav{
-        margin: 0 5%;
-    }
-
-    main {
-        margin: auto 5%;
-    }
-
-    #movieList {
-    grid-template-columns: 2;
-    }
+.movies-content .sort{
+    padding-right: 8%;
+    justify-content: flex-end;
 }
 
 .sort {
     display: flex;
     font-family: 'Poppins', sans-serif;
-    justify-content: flex-end;
 }
 
-.sort select {
+select {
     border: solid 1px #C4C4C4;
     font-size: large;
     border-radius: 12px;
     padding: 0.5em;
     margin: 2%;
     box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.05);
+    font-family: 'Poppins', sans-serif;
 }
 
 .sort select option{
@@ -133,16 +112,11 @@ main {
     color: #0095EA;
 }
 
-#selectSortMovies{
-    font-family: 'Poppins', sans-serif;
-}
-
 #movieList {
-    align-content: center;
-    display: grid;
-    gap: 1.5rem;
-    grid-auto-rows: auto;
-    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
 }
 
 #movieList article {
@@ -152,66 +126,64 @@ main {
 
 article{
     width: 200px;
-    margin: 5% auto;
-    padding: 2%;
+    margin: 2.5% 1.7%;
+    padding: 1%;
     border: solid 1px #C4C4C4;
     border-radius: 15px;
     text-align: left;
     box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.05);
-    /*height: 85%;*/
     background-color: #4545450c;
 }
 
-article:hover, article:focus{ /*PROBAR FOCUS EN EL TELEFONO */
+article:hover, article:focus{ 
     border: solid 1.5px #21B0E8;
 }
 
 article img {
     height: 80%;
-    display: block;
     border-radius: 12px;
     margin: 1em 5% auto 5%;
 }
 
 article p {
-    line-height: 1.6em;
     padding: 0.5em 1em 0em 0.5em;
     text-align: center;
 }
 
+/*SECCIÓN DE STAFF */
 .filter-and-sort{
     display: flex;
     font-size: large;
     justify-content: space-between;
+    padding: 0 5%;
 }
 
 .filter-and-sort p{
     display: inline-block;
-
-}
-
-.staffFilter{
-    display: inline-block;
-}
-
-#selectSortStaff{
-    font-family: 'Poppins', sans-serif;
-    padding: 0.5em;
 }
 
 #staffList {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     align-items: stretch;
+    justify-content: center;
 }
 
 #staffList article {
-    width: 27%;
+    width: 25%;
+    padding: 1.3em;
 }
 
 h3 {
     margin: 0;
+}
+
+footer {
+    background-color: rgba(0, 149, 234, 0.22);
+    width: 100%;
+    position: relative;
+    margin-top: 10%;
+    text-align: center;
 }
 
 #front-page-img{
@@ -221,15 +193,6 @@ h3 {
     bottom: 0%;
     float: right;
     z-index: 1;
-}
-
-footer {
-    background-color: rgba(0, 149, 234, 0.22);
-    width: 100%;
-    position: relative;
-    margin-top: 10%;
-    text-align: center;
-
 }
 
 footer p {
@@ -247,10 +210,10 @@ footer a:visited{
 
 /*Botón ir arriba*/
 .go-up{
-    cursor:pointer;
+    cursor: pointer;
 	position: fixed;
-	bottom:20px;
-	right:20px;
+	bottom: 20px;
+	right: 20px;
     z-index: 2;
     color: #454545;
 }

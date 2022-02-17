@@ -9,15 +9,13 @@ export const movieCards = (movies) => {
 // Si a < b, regresa -1: a, b
 // Si b < a, regresa 1: b, a
 
-export const sortByAZMovies = (movieTitles) => {
-  let moviesAZ = movieTitles.sort(function(a,b){
+export const sortByAZMovies = (movies) => {
+  let moviesAZ = movies.sort(function(a,b){
     if(a[1] === b[1]){
       return 0;
     } if(a[1] < b[1]){
       return -1;
-    }/* if(a[1] > b[1]) {
-      return 1;
-    }*/});
+    }});
   return moviesAZ;
 };
 
