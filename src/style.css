@@ -135,7 +135,7 @@ article{
     background-color: #4545450c;
 }
 
-article:hover, article:focus{ 
+#movieList article:hover, article:focus{ 
     border: solid 1.5px #21B0E8;
 }
 

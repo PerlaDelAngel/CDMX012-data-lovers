@@ -69,13 +69,13 @@ const selectedSort = () => {
     const selectedOption = selectSortMovies.selectedIndex; 
     
     if (selectedOption === 1){ //Para la primera opción
-        printMovieCards(sortByAZMovies(allMovies));
-    } if (selectedOption === 2){
-        printMovieCards(sortByAZMovies(allMovies).reverse());
-    } if (selectedOption === 3){
         printMovieCards(sortByHR(allMovies));
-    } if (selectedOption === 4) {
+    } if (selectedOption === 2){
         printMovieCards(sortByHR(allMovies).reverse());
+    } if (selectedOption === 3){
+        printMovieCards(sortByAZMovies(allMovies));
+    } if (selectedOption === 4) {
+        printMovieCards(sortByAZMovies(allMovies).reverse());
     }
 }
 
@@ -191,47 +191,47 @@ function sort(){
     const selectedOption = selectSortStaff.selectedIndex; // tiene q ir adentro pq si no no funciona
     if (c === 1){
         if (selectedOption === 1){
-            let staffAZ = sortByAZStaff(staffModif);
-            printStaff(staffAZ);
-        } if (selectedOption === 2){
-            let staffZA = sortByAZStaff(staffModif).reverse();
-            printStaff(staffZA);
-        } if (selectedOption === 3){
             let staffHR = sortByHRStaff(staffModif);
             printStaff(staffHR);
-        } if (selectedOption === 4){
+        } if (selectedOption === 2){
             let staffLR = sortByHRStaff(staffModif).reverse();
             printStaff(staffLR);
+        } if (selectedOption === 3){
+            let staffAZ = sortByAZStaff(staffModif);
+            printStaff(staffAZ);
+        } if (selectedOption === 4){
+            let staffZA = sortByAZStaff(staffModif).reverse();
+            printStaff(staffZA);
         }
     }
     if (c === 2){
         if (selectedOption === 1){
-            let staffAZ = sortByAZStaff(directorTitlesArrayModif);
-            printStaff(staffAZ);
-        } if (selectedOption === 2){
-            let staffZA = sortByAZStaff(directorTitlesArrayModif).reverse();
-            printStaff(staffZA);
-        } if (selectedOption === 3){
             let staffHR = sortByHRStaff(directorTitlesArrayModif);
             printStaff(staffHR);
-        } if (selectedOption === 4){
+        } if (selectedOption === 2){
             let staffLR = sortByHRStaff(directorTitlesArrayModif).reverse();
             printStaff(staffLR);
+        } if (selectedOption === 3){
+            let staffAZ = sortByAZStaff(directorTitlesArrayModif);
+            printStaff(staffAZ);
+        } if (selectedOption === 4){
+            let staffZA = sortByAZStaff(directorTitlesArrayModif).reverse();
+            printStaff(staffZA);
         }
     }
     if (c === 3){
         if (selectedOption === 1){
-            let staffAZ = sortByAZStaff(producerTitlesArrayModif);
-            printStaff(staffAZ);
-        } if (selectedOption === 2){
-            let staffZA = sortByAZStaff(producerTitlesArrayModif).reverse();
-            printStaff(staffZA);
-        } if (selectedOption === 3){
             let staffHR = sortByHRStaff(producerTitlesArrayModif);
             printStaff(staffHR);
-        } if (selectedOption === 4){
+        } if (selectedOption === 2){
             let staffLR = sortByHRStaff(producerTitlesArrayModif).reverse();
             printStaff(staffLR);
+        } if (selectedOption === 3){
+            let staffAZ = sortByAZStaff(producerTitlesArrayModif);
+            printStaff(staffAZ);
+        } if (selectedOption === 4){
+            let staffZA = sortByAZStaff(producerTitlesArrayModif).reverse();
+            printStaff(staffZA);
         }
     }
 }
