@@ -100,6 +100,7 @@ for(let i = 0; i < moviesArticles.length; i++){
             displaySections(sectionMovies, sectionStaff, sectionOneMovie);
 
             let elementSection = document.createElement("section");
+            elementSection.setAttribute("class", "poster-description")
 
             let elementH2 = document.createElement("h2");
             elementH2.innerHTML = data.films[j].title;
@@ -121,10 +122,26 @@ for(let i = 0; i < moviesArticles.length; i++){
             elementSection.append(elementPR, elementP);
 
             // Seccion de los personajes (:
+            let characters = movieCharacters(data.films[j]);
+            let charactersBlock = document.createElement("section");
+            charactersBlock.innerHTML = "<h3>Characters</h3>";
 
-            console.log(movieCharacters(data.films[j]));
+            let charactersSection = document.createElement("section");
+            charactersSection.setAttribute("class", "characters");
 
-            document.getElementById("individual-movies").append(elementH2, elementSection);
+            characters.forEach(character => {
+                let elementCharacter = document.createElement("article");
+                elementCharacter.innerHTML = character[0];
+
+                let characterPicture = document.createElement("img");
+                characterPicture.setAttribute("src", character[1]);
+
+                elementCharacter.appendChild(characterPicture);
+
+                charactersSection.appendChild(elementCharacter);
+            })
+
+            document.getElementById("individual-movies").append(elementH2, elementSection, charactersBlock, charactersSection);
         }
     }
 });

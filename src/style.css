@@ -152,17 +152,18 @@ article p {
 
 /* SECCION DE PELICULAS INDIVIDUALES */
 
-.movie section{
-    display:flex;
-    align-items: center;
+.poster-description{
+    display: flex;
+    padding-bottom: 1.5em;
     margin: auto 15%;
+    align-items: center;
 }
 
 .description{
     margin: 1em;
 }
 
-.movie img {
+.poster-description img {
     border-radius: 12px;
     box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.05);
     margin: auto 2em;
@@ -172,6 +173,39 @@ article p {
     align-items: center;
     display: flex;
     flex-direction: column;
+}
+
+
+.movie h3{
+    display: flex;
+    justify-content: center;
+    margin: 0.5em 25%;
+    border-bottom: solid 2px #0095EA;
+    padding-bottom: 1em;
+}
+
+.characters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    margin: auto 5%;
+}
+
+.characters article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    justify-content: center;
+}
+
+.characters img {
+    /*width: 60%;*/
+    display: block;
+    margin: 1.5em;
+    width: fit-content;
+    height: fit-content;
 }
 
 /*SECCIÓN DE STAFF */

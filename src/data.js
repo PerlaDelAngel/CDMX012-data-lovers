@@ -4,6 +4,7 @@ export const movieCards = (movies) => {
   return movie;
 };
 
+//TEST
 export const movieCharacters = (movie) => {
   let characters = [];
 
@@ -105,6 +106,7 @@ export const sortByAZStaff = (staffNames) => {
   return staffAZ;
 };
 
+//TEST
 // Nos devuelve un array ordenado de mayor a menor, para lxs directorxs y productorxs.
 export const sortByHRStaff = (staff) => {
   let clearStaff = staff.filter((arrayStaff) => arrayStaff.length > 3)
