@@ -4,7 +4,7 @@ body{
     color: #454545;
 }
 
-.staff-content {
+.staff-content, .movie {
     display: none;
 }
 
@@ -148,6 +148,30 @@ article img {
 article p {
     padding: 0.5em 1em 0em 0.5em;
     text-align: center;
+}
+
+/* SECCION DE PELICULAS INDIVIDUALES */
+
+.movie section{
+    display:flex;
+    align-items: center;
+    margin: auto 15%;
+}
+
+.description{
+    margin: 1em;
+}
+
+.movie img {
+    border-radius: 12px;
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.05);
+    margin: auto 2em;
+}
+
+.movie aside {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 /*SECCIÓN DE STAFF */

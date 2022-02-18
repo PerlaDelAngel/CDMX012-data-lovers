@@ -4,6 +4,17 @@ export const movieCards = (movies) => {
   return movie;
 };
 
+export const movieCharacters = (movie) => {
+  let characters = [];
+
+  movie.people.forEach(character => {
+    let oneCharacter = [character.name, character.img];
+    characters.push(oneCharacter);
+  });
+
+  return characters;
+}
+
 // Nos devuelve un array ordenado de A a Z, para los titulos de las peliculas.
 // Si a = b, regresa 0: a, b
 // Si a < b, regresa -1: a, b
