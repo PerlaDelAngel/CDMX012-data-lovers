@@ -26,9 +26,11 @@ for(let i = 0; i < data.films.length; i++){
     allMovies.push(movieCards(data.films[i]));
 }
 
+let movieList = document.getElementById("movieList");
+
 // Crea e imprime tarjetas (artículos) en la sección movieList del HTML.
-function printMovieCards(){
-    document.getElementById("movieList").innerHTML = "";
+function printMovieCards(allMovies){
+    movieList.innerHTML = "";
     for(let j = 0; j < allMovies.length; j++){
         let elementArticle = document.createElement("article");
         elementArticle.setAttribute("id", allMovies[j][3]);
@@ -56,11 +58,12 @@ function printMovieCards(){
         elementArticle.appendChild(imgMovie);
         elementArticle.appendChild(elementP);
 
-        document.getElementById("movieList").appendChild(elementArticle);
+        movieList.appendChild(elementArticle);
     }
 }
 
-printMovieCards(); // Imprime películas
+printMovieCards(allMovies); // Imprime películas
+let moviesArticles = movieList.getElementsByTagName("ARTICLE"); //Obtiene los elementos article dentro de la sección movieList
 
 //FUNCIONALIDAD DEL FILTRO DE SORT BY EN LA SECCIÓN DE MOVIES
 //Llama al elemento select de la sección de Movies y lo guarda en una variable
@@ -72,12 +75,16 @@ const selectedSort = () => {
     
     if (selectedOption === 1){ //Para la primera opción
         printMovieCards(sortByHR(allMovies));
+        printMovieDetails();
     } if (selectedOption === 2){
         printMovieCards(sortByHR(allMovies).reverse());
+        printMovieDetails();
     } if (selectedOption === 3){
         printMovieCards(sortByAZMovies(allMovies));
+        printMovieDetails();
     } if (selectedOption === 4) {
         printMovieCards(sortByAZMovies(allMovies).reverse());
+        printMovieDetails();
     }
 }
 
@@ -85,66 +92,67 @@ const selectedSort = () => {
 selectSortMovies.addEventListener("change", selectedSort);
 
 //SECCIÓN PARA IMPRIMIR INFORMACIÓN DE CADA PELÍCULA
-// 1. Escucha cuando el usuario le pique a una tarjeta (addEventListener y id de la tarjeta).
-// 2. Obten la info de esa tarjeta (data). => busca el id en data.films y jala la informacion.
-// 3. Corre una funcion que imprima la info de la tarjeta (main).
-let movieList = document.getElementById("movieList");
-let moviesArticles = movieList.getElementsByTagName("ARTICLE");
 
-for(let i = 0; i < moviesArticles.length; i++){
-   moviesArticles[i].addEventListener("click", () => {
-    let movieId = moviesArticles[i].getAttribute("id");
-    document.getElementById("individual-movies").innerHTML = "";
-    for(let j = 0; j < data.films.length; j++){
-        if(movieId === data.films[j].id){
-            displaySections(sectionMovies, sectionStaff, sectionOneMovie);
+//Imprime los detalles de cada película
+printMovieDetails();
 
-            let elementSection = document.createElement("section");
-            elementSection.setAttribute("class", "poster-description")
-
-            let elementH2 = document.createElement("h2");
-            elementH2.innerHTML = data.films[j].title;
-
-            let elementPR  = document.createElement("aside");
-
-            let poster = document.createElement("img");
-            poster.setAttribute("src", data.films[j].poster);
-
-            let elementP = document.createElement("p");
-            elementP.setAttribute("class", "description");
-            elementP.innerHTML = "<strong>Release date: </strong>" + data.films[j].release_date + "<br><strong> Director: </strong>" + data.films[j].director + "<br><strong> Producer: </strong>" + data.films[j].producer + "<br><strong> Description: </strong>" + data.films[j].description;
-
-            let elementRating = document.createElement("p");
-            elementRating.setAttribute("class", "rating");
-            elementRating.innerHTML = "<strong><span style='color:#FDCD00; font-size:150%';> ★ </span>" + data.films[j].rt_score + "% </strong>";
-
-            elementPR.append(poster, elementRating);
-            elementSection.append(elementPR, elementP);
-
-            // Seccion de los personajes (:
-            let characters = movieCharacters(data.films[j]);
-            let charactersBlock = document.createElement("section");
-            charactersBlock.innerHTML = "<h3>Characters</h3>";
-
-            let charactersSection = document.createElement("section");
-            charactersSection.setAttribute("class", "characters");
-
-            characters.forEach(character => {
-                let elementCharacter = document.createElement("article");
-                elementCharacter.innerHTML = character[0];
-
-                let characterPicture = document.createElement("img");
-                characterPicture.setAttribute("src", character[1]);
-
-                elementCharacter.appendChild(characterPicture);
-
-                charactersSection.appendChild(elementCharacter);
+function printMovieDetails(){
+    for(let i = 0; i < moviesArticles.length; i++){
+        moviesArticles[i].addEventListener("click", () => {
+            let movieId = moviesArticles[i].getAttribute("id");
+            document.getElementById("individual-movies").innerHTML = "";
+            
+            data.films.forEach( film => {
+                if(movieId === film.id){
+                    displaySections(sectionMovies, sectionStaff, sectionOneMovie);
+     
+                    let elementSection = document.createElement("section");
+                    elementSection.setAttribute("class", "poster-description")
+     
+                    let elementH2 = document.createElement("h2");
+                    elementH2.innerHTML = film.title;
+     
+                    let elementPR  = document.createElement("aside");
+     
+                    let poster = document.createElement("img");
+                    poster.setAttribute("src", film.poster);
+     
+                    let elementP = document.createElement("p");
+                    elementP.setAttribute("class", "description");
+                    elementP.innerHTML = "<strong>Release date: </strong>" + film.release_date + "<br><strong> Director: </strong>" + film.director + "<br><strong> Producer: </strong>" + film.producer + "<br><strong> Description: </strong>" + film.description;
+     
+                    let elementRating = document.createElement("p");
+                    elementRating.setAttribute("class", "rating");
+                    elementRating.innerHTML = "<strong><span style='color:#FDCD00; font-size:150%';> ★ </span>" + film.rt_score + "% </strong>";
+     
+                    elementPR.append(poster, elementRating);
+                    elementSection.append(elementPR, elementP);
+     
+                    // Seccion de los personajes (:
+                    let characters = movieCharacters(film);
+                    let charactersBlock = document.createElement("section");
+                    charactersBlock.innerHTML = "<h3>Characters</h3>";
+     
+                    let charactersSection = document.createElement("section");
+                    charactersSection.setAttribute("class", "characters");
+     
+                    characters.forEach(character => {
+                        let elementCharacter = document.createElement("article");
+                        elementCharacter.innerHTML = character[0];
+     
+                        let characterPicture = document.createElement("img");
+                        characterPicture.setAttribute("src", character[1]);
+     
+                        elementCharacter.appendChild(characterPicture);
+     
+                        charactersSection.appendChild(elementCharacter);
+                    });
+     
+                document.getElementById("individual-movies").append(elementH2, elementSection, charactersBlock, charactersSection);
+                }
             })
-
-            document.getElementById("individual-movies").append(elementH2, elementSection, charactersBlock, charactersSection);
-        }
+        });
     }
-});
 }
 
 // SECCIÓN DE DIRECTORES Y PRODUCTORES -------------------------------------------------------------

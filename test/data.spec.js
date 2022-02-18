@@ -1,13 +1,13 @@
 import { describe, it } from 'eslint/lib/rule-tester/rule-tester';
 
-import { movieCards, sortByAZMovies, sortByHR, directors, producers, directorTitles, producerTitles, sortByAZStaff } from '../src/data.js';
+import { movieCards, movieCharacters, sortByAZMovies, sortByHR, directors, producers, directorTitles, producerTitles, sortByAZStaff, sortByHRStaff } from '../src/data.js';
 
 describe('movieCards', () => {
   it('is a function', () => {
     expect(typeof movieCards).toBe('function');
   });
 
-  it('returns ` movie poster, title and rating `', () => {
+  it('returns ` movie poster, title, rating and id`', () => {
     const films={
       "id": "2baf70d1-42bb-4437-b551-e5fed5a87abe",
       "title": "Castle in the Sky",
@@ -18,7 +18,41 @@ describe('movieCards', () => {
       "release_date": "1986",
       "rt_score": "95"
     }
-    expect(movieCards(films)).toEqual(["https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg", "Castle in the Sky", "95"]);
+    expect(movieCards(films)).toEqual(["https://static.wikia.nocookie.net/studio-ghibli/images/c/c1/Castle_in_the_Sky.jpg", "Castle in the Sky", "95", "2baf70d1-42bb-4437-b551-e5fed5a87abe"]);
+  });
+});
+
+describe('movieCharacters', () => {
+  it('is a function', () => {
+    expect(typeof movieCharacters).toBe('function');
+  });
+
+  it('returns an array of each characters name and image', () => {
+    const film={
+      "id": "2baf70d1-42bb-4437-b551-e5fed5a87abe",
+      "title": "Castle in the Sky",
+      "people": [
+        {
+          "id": "fe93adf2-2f3a-4ec4-9f68-5422f1b87c01",
+          "name": "Pazu",
+          "img": "https://static.wikia.nocookie.net/studio-ghibli/images/8/8b/Pazu.jpg",
+          "gender": "Male"
+        },
+        {
+          "id": "598f7048-74ff-41e0-92ef-87dc1ad980a9",
+          "name": "Lusheeta Toel Ul Laputa",
+          "img": "https://static.wikia.nocookie.net/studio-ghibli/images/c/c3/Sheeta.jpg",
+          "gender": "Female"
+        },
+        {
+          "id": "3bc0b41e-3569-4d20-ae73-2da329bf0786",
+          "name": "Dola",
+          "img": "https://static.wikia.nocookie.net/studio-ghibli/images/b/b3/Dola.png",
+          "gender": "Female"
+        },
+      ]
+    }
+    expect(movieCharacters(film)).toEqual([["Pazu", "https://static.wikia.nocookie.net/studio-ghibli/images/8/8b/Pazu.jpg"], ["Lusheeta Toel Ul Laputa", "https://static.wikia.nocookie.net/studio-ghibli/images/c/c3/Sheeta.jpg"], ["Dola", "https://static.wikia.nocookie.net/studio-ghibli/images/b/b3/Dola.png"]]);
   });
 });
 
@@ -147,5 +181,16 @@ describe('sortByAZStaff', () => {
   it('returns ` sorted array by alphabetical order `', () =>{
     const array1 = [["Orlando", "as director of:", "Titanic", "Totoro"], ["Jaime", "as producer of:", "Titanic", "Titanic 2", "Jurassic Park"], ["Maria", "as director of:", "Jurassic Park", "Nemo"], ["Maria", "as producer of:", "Encanto", "Luca"]]
     expect(sortByAZStaff(array1)).toEqual([["Jaime", "as producer of:", "Titanic", "Titanic 2", "Jurassic Park"], ["Maria", "as director of:", "Jurassic Park", "Nemo"], ["Maria", "as producer of:", "Encanto", "Luca"], ["Orlando", "as director of:", "Titanic", "Totoro"]]);
+  });
+});
+
+describe('sortByHRStaff', () => {
+  it('is a function', () => {
+    expect(typeof sortByHRStaff).toBe('function');
+  });
+
+  it('returns a sorted array by highest rating', () =>{
+    const array2 = [["Orlando", "as director of:", "Titanic", "Totoro", 98], ["Jaime", "as producer of:", "Titanic", "Titanic 2", "Jurassic Park", 78], ["Maria", "as director of:"], ["Maria", "as producer of:", "Encanto", "Luca", 100]]
+    expect(sortByHRStaff(array2)).toEqual([["Maria", "as producer of:", "Encanto", "Luca", 100], ["Orlando", "as director of:", "Titanic", "Totoro", 98], ["Jaime", "as producer of:", "Titanic", "Titanic 2", "Jurassic Park", 78]]);
   });
 });
