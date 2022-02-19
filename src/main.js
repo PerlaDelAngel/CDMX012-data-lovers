@@ -11,6 +11,7 @@ function displaySections(hideSection, secHideSection, showSection){
     hideSection.style.display = "none";
     secHideSection.style.display = "none";
     showSection.style.display = "block";
+    showSection.scrollIntoView();
 }
 
 document.getElementById("btnMovies").addEventListener("click", ()=>{displaySections(sectionStaff, sectionOneMovie, sectionMovies)});
@@ -113,6 +114,10 @@ function printMovieDetails(){
                     elementH2.innerHTML = film.title;
      
                     let elementPR  = document.createElement("aside");
+
+                    let elementButton = document.createElement("button");
+                    elementButton.innerHTML = "🡸";
+                    elementButton.setAttribute("id", "back-button");
      
                     let poster = document.createElement("img");
                     poster.setAttribute("src", film.poster);
@@ -126,7 +131,7 @@ function printMovieDetails(){
                     elementRating.innerHTML = "<strong><span style='color:#FDCD00; font-size:150%';> ★ </span>" + film.rt_score + "% </strong>";
      
                     elementPR.append(poster, elementRating);
-                    elementSection.append(elementPR, elementP);
+                    elementSection.append(elementButton, elementPR, elementP);
      
                     // Seccion de los personajes (:
                     let characters = movieCharacters(film);
@@ -149,12 +154,18 @@ function printMovieDetails(){
                     });
      
                 document.getElementById("individual-movies").append(elementH2, elementSection, charactersBlock, charactersSection);
+                document.getElementById("individual-movies").scrollIntoView();
                 }
             })
         });
     }
 }
 
+document.body.addEventListener("click", function (boton) {
+    if(boton.target.id === "back-button"){
+        displaySections(sectionOneMovie, sectionStaff, sectionMovies);
+    }
+});
 // SECCIÓN DE DIRECTORES Y PRODUCTORES -------------------------------------------------------------
 //Obtener una lista con los nombres de todos los directores y productores
 let people = [];
@@ -302,5 +313,9 @@ selectSortStaff.addEventListener("change", sort);
 
 //Botón para subir hasta el principio de la página 
 document.getElementById("button-up").addEventListener("click", () => {
-    window.scrollTo(0,0);
-})
+    window.scroll({
+        top:0,
+        left:0,
+        behavior:"smooth"
+    });
+});
