@@ -22,7 +22,7 @@ button{
     font-family: 'Poppins', sans-serif; 
     text-align: center;
     background-color: white;
-    padding: 14px 17px;
+    padding: 0.7em;
     border-radius: 15px;
     border: 1.7px solid #454545;
     cursor: pointer; 
@@ -33,7 +33,7 @@ header{
 }
 
 h1{
-    font-size: 60px;
+    font-size: 50px;
     text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
     font-weight: 400;
     letter-spacing: 0.185em;
@@ -43,8 +43,14 @@ h1{
 }
 
 header p{
-    font-size: 22px;
+    font-size: 19px;
     margin-bottom: 2%;
+    margin-top: 0.7%;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
 }
 
 .menu-buttons{ /*Clase para los botones del menú*/
@@ -67,7 +73,7 @@ header p{
 h2{
     text-align: center;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 37px;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     letter-spacing: 0.2em;
     border-top: solid 2px #0095EA;
@@ -85,6 +91,8 @@ main {
 
 .movies-content .sort{
     padding-right: 8%;
+    margin-top: 0.5%;
+    margin-bottom: 0;
     justify-content: flex-end;
 }
 
@@ -98,7 +106,7 @@ select {
     font-size: large;
     border-radius: 12px;
     padding: 0.5em;
-    margin: 2%;
+    margin: 0.5% 2%;
     box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.05);
     font-family: 'Poppins', sans-serif;
 }
@@ -152,11 +160,16 @@ article p {
 
 /* SECCION DE PELICULAS INDIVIDUALES */
 
+/*.movie{
+    position: relative;
+}*/
+
 .poster-description{
     display: flex;
     padding-bottom: 1.5em;
     margin: auto 15%;
     align-items: center;
+    position: relative;
 }
 
 .description{
@@ -167,6 +180,15 @@ article p {
     border-radius: 12px;
     box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.05);
     margin: auto 2em;
+}
+
+.movie button {
+    position:absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    color: #454545;
+    border-color: #454545;
 }
 
 .movie aside {
