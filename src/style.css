@@ -4,8 +4,75 @@ body{
     color: #454545;
 }
 
+@media only screen and (max-width: 600px){
+    html{
+        font-size: 10px;
+    }
+
+    .nav-logo{
+        height: 50px !important;
+    }
+
+    .menu-buttons{
+        width: 40% !important;
+        font-size: 1.2rem !important;
+    }
+
+    article{
+        font-size: 1.2rem;
+    }
+
+    h2{
+        font-size: 2rem !important;
+    }
+
+    #movieList article{
+        width: 40% !important;
+    }
+    
+    .poster-description{
+        flex-direction: column;
+        margin: 2% !important;
+    }
+
+    .movie aside{
+        height: 40%;
+        width: auto !important;
+    }
+
+    .description{
+        width: 80% !important;
+    }
+
+    .characters article{
+        width: 40%;
+        justify-content: center;
+        padding: 4% 1% 0% 1%;
+    }
+
+    .characters img{
+        margin: 1em;
+    }
+
+    #staffList article {
+        width: 75% !important;
+    }
+
+    .filter-and-sort{
+        flex-direction: column !important;
+        align-items: flex-end;
+        margin-bottom: 4%;
+    }
+
+}
+
+
 .staff-content, .movie {
     display: none;
+}
+
+.nav-logo{
+    height: 70px;
 }
 
 nav{
@@ -18,7 +85,7 @@ nav{
 }
 
 button{
-    font-size: 1em;
+    font-size: 1rem;
     font-family: 'Poppins', sans-serif; 
     text-align: center;
     background-color: white;
@@ -33,7 +100,7 @@ header{
 }
 
 h1{
-    font-size: 50px;
+    font-size: 3.5rem;
     text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
     font-weight: 400;
     letter-spacing: 0.185em;
@@ -43,7 +110,7 @@ h1{
 }
 
 header p{
-    font-size: 19px;
+    font-size: 1.5rem;
     margin-bottom: 2%;
     margin-top: 0.7%;
 }
@@ -55,7 +122,7 @@ header p{
 
 .menu-buttons{ /*Clase para los botones del menú*/
     margin: 1% 0.5%;
-    font-size: 18px;
+    font-size: 1.3rem;
     text-align: center;
     border: 2px solid #0095EA;
     width: 20%;
@@ -73,7 +140,7 @@ header p{
 h2{
     text-align: center;
     font-weight: 600;
-    font-size: 37px;
+    font-size: 2.5rem;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     letter-spacing: 0.2em;
     border-top: solid 2px #0095EA;
@@ -103,7 +170,7 @@ main {
 
 select {
     border: solid 1px #C4C4C4;
-    font-size: large;
+    font-size: 1.2rem;
     border-radius: 12px;
     padding: 0.5em;
     margin: 0.5% 2%;
@@ -159,11 +226,6 @@ article p {
 }
 
 /* SECCION DE PELICULAS INDIVIDUALES */
-
-/*.movie{
-    position: relative;
-}*/
-
 .poster-description{
     display: flex;
     padding-bottom: 1.5em;
@@ -174,12 +236,23 @@ article p {
 
 .description{
     margin: 1em;
+    width: 60%;
+    font-size: 1.1rem;
 }
 
 .poster-description img {
     border-radius: 12px;
     box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.05);
     margin: auto 2em;
+    width: 75%;
+}
+
+.movie aside {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    font-size: 1.05rem;
 }
 
 .movie button {
@@ -191,19 +264,13 @@ article p {
     border-color: #454545;
 }
 
-.movie aside {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-
 .movie h3{
     display: flex;
     justify-content: center;
     margin: 0.5em 25%;
     border-bottom: solid 2px #0095EA;
     padding-bottom: 1em;
+    font-size: 1.3rem;
 }
 
 .characters {
@@ -218,23 +285,22 @@ article p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: fit-content;
     justify-content: center;
+    font-size: 1.1rem;
 }
 
 .characters img {
-    /*width: 60%;*/
+    width: 90%;
     display: block;
     margin: 1.5em;
-    width: fit-content;
     height: fit-content;
-    
+    max-height: 90%;
 }
 
 /*SECCIÓN DE STAFF */
 .filter-and-sort{
     display: flex;
-    font-size: large;
+    font-size: 1.2rem;
     justify-content: space-between;
     padding: 0 5%;
 }
@@ -277,6 +343,7 @@ footer {
 }
 
 footer p {
+    font-size: 1.1rem;
     padding: 0.7em;
     margin-block-end: 0;
 }
