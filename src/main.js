@@ -5,18 +5,22 @@ import data from './data/ghibli/ghibli.js';
 // DESPLEGAR SECCIONES
 const sectionMovies = document.getElementById("movies-content");
 const sectionOneMovie = document.getElementById("individual-movies");
+const sectionCharacters = document.getElementById("characters-content");
 const sectionStaff = document.getElementById("staff-content");
 
-function displaySections(hideSection, secHideSection, showSection){
+function displaySections(hideSection, secHideSection, thirdHideSection, showSection){
     hideSection.style.display = "none";
     secHideSection.style.display = "none";
+    thirdHideSection.style.display = "none";
     showSection.style.display = "block";
     showSection.scrollIntoView();
 }
 
-document.getElementById("btnMovies").addEventListener("click", ()=>{displaySections(sectionStaff, sectionOneMovie, sectionMovies)});
+document.getElementById("btnMovies").addEventListener("click", ()=>{displaySections(sectionStaff, sectionOneMovie, sectionCharacters, sectionMovies)});
 
-document.getElementById("btnStaff").addEventListener("click", ()=>{ displaySections(sectionMovies, sectionOneMovie, sectionStaff)});
+document.getElementById("btnCharacters").addEventListener("click", ()=>{displaySections(sectionStaff, sectionOneMovie, sectionMovies, sectionCharacters)});
+
+document.getElementById("btnStaff").addEventListener("click", ()=>{ displaySections(sectionMovies, sectionOneMovie, sectionCharacters, sectionStaff)});
 
 // SECCIÓN DE PELÍCULAS -----------------------------------------------------------------------
 //Array bidimensional donde se van a guardar las películas con su poster, título, rating y id.
@@ -105,7 +109,7 @@ function printMovieDetails(){
             
             data.films.forEach( film => {
                 if(movieId === film.id){
-                    displaySections(sectionMovies, sectionStaff, sectionOneMovie);
+                    displaySections(sectionMovies, sectionStaff, sectionCharacters, sectionOneMovie);
      
                     let elementSection = document.createElement("section");
                     elementSection.setAttribute("class", "poster-description")
@@ -147,6 +151,7 @@ function printMovieDetails(){
      
                         let characterPicture = document.createElement("img");
                         characterPicture.setAttribute("src", character[1]);
+
      
                         elementCharacter.appendChild(characterPicture);
      
@@ -156,16 +161,47 @@ function printMovieDetails(){
                 document.getElementById("individual-movies").append(elementH2, elementSection, charactersBlock, charactersSection);
                 document.getElementById("individual-movies").scrollIntoView();
                 }
-            })
+            });
         });
     }
 }
 
 document.body.addEventListener("click", function (boton) {
     if(boton.target.id === "back-button"){
-        displaySections(sectionOneMovie, sectionStaff, sectionMovies);
+        displaySections(sectionOneMovie, sectionStaff, sectionCharacters, sectionMovies);
     }
 });
+
+// SECCION DE PERSONAJES ----------------------------------------------------------------------------------
+
+data.films.forEach(film => printCharacters(movieCharacters(film)));
+
+function printCharacters(charactersArr){
+    charactersArr.forEach(character => {
+        let elementArticle = document.createElement("article");
+        elementArticle.innerHTML = "<strong style='font-size: 1.2rem';>" + character[0] + "</strong>";
+
+        let elementImg = document.createElement("img");
+        elementImg.setAttribute("src", character[1]);
+
+        let elementP = document.createElement("p");
+        elementP.innerHTML = "<strong>Age:</strong> " + character[3] + "<br><strong>Gender:</strong> " + character[2] + "<br><strong>Species:</strong> " + character[4];
+
+        elementArticle.append(elementImg, elementP);
+        document.getElementById("charactersList").appendChild(elementArticle);
+    });
+}
+
+// 2. Imprima los personajes de la pelicula seleccionada.
+// PARA LLENAR LAS OPCIONES DENTRO DE FILTERBYMOVIE
+allMovies.forEach(movie => {
+    let option = document.createElement("option");
+    option.innerHTML = movie[1];
+    document.getElementById("filterMovies").appendChild(option);
+})
+
+const selectFilterMovie = document.querySelector("#filterMovies");
+
 // SECCIÓN DE DIRECTORES Y PRODUCTORES -------------------------------------------------------------
 //Obtener una lista con los nombres de todos los directores y productores
 let people = [];

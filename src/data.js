@@ -9,7 +9,7 @@ export const movieCharacters = (movie) => {
   let characters = [];
 
   movie.people.forEach(character => {
-    let oneCharacter = [character.name, character.img];
+    let oneCharacter = [character.name, character.img, character.gender, character.age, character.specie];
     characters.push(oneCharacter);
   });
 
