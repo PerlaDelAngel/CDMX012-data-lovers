@@ -22,6 +22,7 @@
             <p>Welcome to Studio Ghibli's world! <br> Discover more about your favorite animated movies.</p>
             <section id="menu" class="menu">
                 <button id="btnMovies" class="menu-buttons">Movies</button>
+                <button id="btnCharacters" class="menu-buttons">Characters</button>
                 <button id="btnStaff" class="menu-buttons">Directors and producers</button>
             </section>
         </header>
@@ -42,10 +43,33 @@
 
         <main class="movie" id="individual-movies"></main>
 
+        <main class="characters-content" id="characters-content">
+            <h2>CHARACTERS</h2>
+            <div class="filter-and-sort">
+                <section class="charactersFilter">
+                    <p><strong>Filter by: </strong></p> 
+                    <select id="filterMovies">
+                        <option selected>Movies</option>
+                    </select>
+                </section>
+                <section class="sort"> 
+                    <select id="selectSortCharacters">
+                        <option selected>Sort by</option>
+                        <option>A-Z</option>
+                        <option>Z-A</option>
+                        <option>Youngest to oldest</option>
+                        <option>Oldest to youngest</option>
+                    </select>
+                </section>
+            </div>
+            <section id="charactersList"></section>
+
+        </main>
+
         <main class="staff-content" id="staff-content">
             <h2>DIRECTORS AND PRODUCERS</h2>
 
-            <section class="filter-and-sort">
+            <div class="filter-and-sort">
                 <section class="staffFilter">
                     <p><strong>Filter by: </strong></p> 
                     <input type="radio" id="allRadio" name="staffRadio" checked>
@@ -64,7 +88,7 @@
                         <option>Z-A</option>
                     </select>
                 </section>
-            </section>
+            </div>
             <section id="staffList"></section>
         </main>
 
