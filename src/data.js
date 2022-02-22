@@ -39,6 +39,16 @@ export const sortByHR = (movieRating) => {
   return movieHR;
 }
 
+export const sortByAZCharacters = (movieCharacters) => {
+  let charactersAZ = movieCharacters.sort(function(a,b){
+    if(a[0] === b[0]){
+      return 0;
+    } if(a[0].name < b[0]){
+      return -1;
+    }});
+  return charactersAZ;
+};
+
 // Nos devuelve los nombres de los directores.
 export const directors = (staff) => {
   let director = staff.director;

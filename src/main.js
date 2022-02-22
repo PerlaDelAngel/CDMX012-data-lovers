@@ -1,4 +1,4 @@
-import { movieCards, movieCharacters, directors, producers, directorTitles, producerTitles, sortByAZMovies, sortByHR, sortByAZStaff, sortByHRStaff } from './data.js';
+import { movieCards, movieCharacters, directors, producers, directorTitles, producerTitles, sortByAZMovies, sortByHR, sortByAZCharacters, sortByAZStaff, sortByHRStaff } from './data.js';
 
 import data from './data/ghibli/ghibli.js';
 
@@ -178,6 +178,7 @@ data.films.forEach(film => printCharacters(movieCharacters(film)));
 
 function printCharacters(charactersArr){
     charactersArr.forEach(character => {
+
         let elementArticle = document.createElement("article");
         elementArticle.innerHTML = "<strong style='font-size: 1.2rem';>" + character[0] + "</strong>";
 
@@ -192,7 +193,6 @@ function printCharacters(charactersArr){
     });
 }
 
-// 2. Imprima los personajes de la pelicula seleccionada.
 // PARA LLENAR LAS OPCIONES DENTRO DE FILTERBYMOVIE
 allMovies.forEach(movie => {
     let option = document.createElement("option");
@@ -200,8 +200,52 @@ allMovies.forEach(movie => {
     document.getElementById("filterMovies").appendChild(option);
 })
 
+// FILTRA POR PELICULAS
+
 const selectFilterMovie = document.querySelector("#filterMovies");
 
+function filterByMovie(){
+    let title = selectFilterMovie[selectFilterMovie.selectedIndex].value;
+    data.films.forEach(movie =>{
+        if(title === movie.title){
+            document.getElementById("charactersList").innerHTML = " ";
+            printCharacters(movieCharacters(movie));
+        }
+    })
+}
+
+selectFilterMovie.addEventListener("change", filterByMovie);
+
+// ORDENA PERSONAJES
+let allCharacters = [];
+
+data.films.forEach(film => {
+    console.log(movieCharacters(film));
+    allCharacters.push(movieCharacters(film));
+});
+
+console.log(allCharacters);
+
+const selectCharacters = document.querySelector("#selectSortCharacters");
+
+function sortCharacters() {
+    const selectedOption = selectCharacters.selectedIndex; 
+    
+    if (selectedOption === 1){ //Para la primera opción
+        printCharacters(sortByAZCharacters(allCharacters));
+    } if (selectedOption === 2){
+        printMovieCards(sortByHR(allMovies).reverse());
+        printMovieDetails();
+    } if (selectedOption === 3){
+        printMovieCards(sortByAZMovies(allMovies));
+        printMovieDetails();
+    } if (selectedOption === 4) {
+        printMovieCards(sortByAZMovies(allMovies).reverse());
+        printMovieDetails();
+    }
+}
+
+selectCharacters.addEventListener("change", sortCharacters);
 // SECCIÓN DE DIRECTORES Y PRODUCTORES -------------------------------------------------------------
 //Obtener una lista con los nombres de todos los directores y productores
 let people = [];
