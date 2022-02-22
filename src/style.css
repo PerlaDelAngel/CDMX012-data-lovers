@@ -297,11 +297,19 @@ article p {
     max-height: 90%;
 }
 
+
 /* SECCION DE PERSONAJES */
 #charactersList {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+#charactersList h3 {
+    flex: 0 0 100%;
+    padding: 2% auto;
+    font-size: 1.3rem;
+    text-align: center;
 }
 
 #charactersList article{
@@ -328,6 +336,15 @@ article p {
 
 .charactersFilter {
     display:flex;
+}
+
+.characters-content .filter-and-sort p{
+    display: flex;
+    flex: 0 0 20%;
+}
+
+.characters-content .filter-and-sort{
+    margin-bottom: 2.5%;
 }
 
 /*SECCIÓN DE STAFF */

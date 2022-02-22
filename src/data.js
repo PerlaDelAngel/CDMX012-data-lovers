@@ -4,18 +4,6 @@ export const movieCards = (movies) => {
   return movie;
 };
 
-//TEST
-export const movieCharacters = (movie) => {
-  let characters = [];
-
-  movie.people.forEach(character => {
-    let oneCharacter = [character.name, character.img, character.gender, character.age, character.specie];
-    characters.push(oneCharacter);
-  });
-
-  return characters;
-}
-
 // Nos devuelve un array ordenado de A a Z, para los titulos de las peliculas.
 // Si a = b, regresa 0: a, b
 // Si a < b, regresa -1: a, b
@@ -39,15 +27,68 @@ export const sortByHR = (movieRating) => {
   return movieHR;
 }
 
+//PERSONAJES
+//TEST Devuelve un array bidimensional por película, en donde cada personaje tiene 5 elementos
+export const movieCharacters = (movie) => {
+  let characters = [];
+
+  movie.people.forEach(character => {
+    let oneCharacter = [character.name, character.img, character.gender, character.age, character.specie];
+    characters.push(oneCharacter);
+  });
+
+  return characters;
+}
+//TEST Ordena un array de personajes en orden alfabético
 export const sortByAZCharacters = (movieCharacters) => {
   let charactersAZ = movieCharacters.sort(function(a,b){
     if(a[0] === b[0]){
       return 0;
-    } if(a[0].name < b[0]){
+    } if(a[0] < b[0]){
       return -1;
     }});
   return charactersAZ;
 };
+
+//TEST Ordena un array de personajes por edad si tienen la edad como un número
+export const sortByAgeNumber = (movieCharacters) => {
+  let ageInNumber = movieCharacters.filter(character => character[3].length < 5 && character[3]!="NA" && character[3]!="");
+
+  let charactersAge = ageInNumber.sort(function(a, b){
+    return parseInt(a[3]) - parseInt(b[3]);
+  });
+
+  return charactersAge; 
+}
+
+//TEST Ordena un array de personajes por edad si tienen la edad en una string
+export const sortByAgeString = (movieCharacters) => {
+  let ageInString = movieCharacters.filter(character => character[3].length > 4 || character[3]==="NA" || character[3]==="");
+
+   ageInString.forEach(character => {
+    if(character[3].includes("Child")){
+      character.push(1);
+    } else if(character[3].includes("Teenager") || character[3].includes("12")){
+      character.push(2);
+    } else if(character[3].includes("Young") || character[3].includes("14")){
+      character.push(3);
+    } else if(character[3].includes("Adult") || character[3].includes("23") || character[3].includes("20")){
+      character.push(4);
+    } else if(character[3].includes("Middle age") || character[3].includes("40")){
+      character.push(5);
+    } else if(character[3].includes("50") || character[3].includes("Elder")){
+      character.push(6);
+    } else {
+      character.push(7);
+    }
+  }) 
+
+  let ageStringSorted = ageInString.sort(function(a,b){
+    return a[5] - b[5];
+  });
+
+  return ageStringSorted;
+}
 
 // Nos devuelve los nombres de los directores.
 export const directors = (staff) => {
