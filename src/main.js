@@ -209,9 +209,11 @@ function filterByMovie(){
     let title = selectFilterMovie[selectFilterMovie.selectedIndex].value;
     data.films.forEach(movie =>{
         if(title === movie.title){
+            selectSortCharacters.selectedIndex = 0;
             document.getElementById("charactersList").innerHTML = " ";
             printCharacters(movieCharacters(movie));
         } else if (title === "All movies"){
+            selectSortCharacters.selectedIndex = 0;
             document.getElementById("charactersList").innerHTML = " ";
             data.films.forEach(film => printCharacters(movieCharacters(film)));
         }
@@ -227,11 +229,9 @@ data.films.forEach(film => {
     allCharacters.push(movieCharacters(film));
 });
 
-console.log(allCharacters);
-
 //Crea un array de 2 dimensiones: personajes y 5 elementos de cada uno
-//let allCharactersFlat = allCharacters.flat(1);
-
+let allCharactersFlat = allCharacters.flat(1);
+console.log(allCharactersFlat);
 
 const selectSortCharacters = document.querySelector("#selectSortCharacters");
 
@@ -255,13 +255,13 @@ function sortCharacters() {
             if (selectedOption === 3){ //Ordena por edad con número y sin número de menor a mayor
                 document.getElementById("charactersList").innerHTML = "";
         
-                let charactersWithAgeNumber = document.createElement("h3")
-                charactersWithAgeNumber.innerHTML = "Characters with specific age: ";
+                let charactersWithAgeNumber = document.createElement("h3");
+                charactersWithAgeNumber.innerHTML = "Characters with a specific age: ";
                 document.getElementById("charactersList").appendChild(charactersWithAgeNumber);
                 printCharacters(sortByAgeNumber(movieCharacters(movie)));
         
-                let charactersWithAgeString = document.createElement("h3")
-                charactersWithAgeString.innerHTML = "Characters without specific age: ";
+                let charactersWithAgeString = document.createElement("h3");
+                charactersWithAgeString.innerHTML = "Characters without a specific age: ";
                 document.getElementById("charactersList").appendChild(charactersWithAgeString);
                 printCharacters(sortByAgeString(movieCharacters(movie)));
             }
@@ -269,18 +269,18 @@ function sortCharacters() {
             if (selectedOption === 4) { //Ordena por edad con número y sin número de mayor a menor
                 document.getElementById("charactersList").innerHTML = "";
         
-                let charactersWithAgeNumber = document.createElement("h3")
-                charactersWithAgeNumber.innerHTML = "Characters with specific age: ";
+                let charactersWithAgeNumber = document.createElement("h3");
+                charactersWithAgeNumber.innerHTML = "Characters with a specific age: ";
                 document.getElementById("charactersList").appendChild(charactersWithAgeNumber);
                 printCharacters(sortByAgeNumber(movieCharacters(movie)).reverse());
         
                 let charactersWithAgeString = document.createElement("h3")
-                charactersWithAgeString.innerHTML = "Characters without specific age: ";
+                charactersWithAgeString.innerHTML = "Characters without a specific age: ";
                 document.getElementById("charactersList").appendChild(charactersWithAgeString);
                 printCharacters(sortByAgeString(movieCharacters(movie)).reverse());
             }
 
-        } /* else {
+        } else if (title === "Movie" || title === "All movies") {
             if (selectedOption === 1){ //Ordena A-Z
                 document.getElementById("charactersList").innerHTML = "";
                 printCharacters(sortByAZCharacters(allCharactersFlat));
@@ -294,13 +294,13 @@ function sortCharacters() {
             if (selectedOption === 3){ //Ordena por edad con número y sin número de menor a mayor
                 document.getElementById("charactersList").innerHTML = "";
 
-                let charactersWithAgeNumber = document.createElement("h3")
-                charactersWithAgeNumber.innerHTML = "Characters with specific age: ";
+                let charactersWithAgeNumber = document.createElement("h3");
+                charactersWithAgeNumber.innerHTML = "Characters with a specific age: ";
                 document.getElementById("charactersList").appendChild(charactersWithAgeNumber);
                 printCharacters(sortByAgeNumber(allCharactersFlat));
 
-                let charactersWithAgeString = document.createElement("h3")
-                charactersWithAgeString.innerHTML = "Characters without specific age: ";
+                let charactersWithAgeString = document.createElement("h3");
+                charactersWithAgeString.innerHTML = "Characters without a specific age: ";
                 document.getElementById("charactersList").appendChild(charactersWithAgeString);
                 printCharacters(sortByAgeString(allCharactersFlat));
             } 
@@ -308,61 +308,19 @@ function sortCharacters() {
             if (selectedOption === 4) { //Ordena por edad con número y sin número de mayor a menor
                 document.getElementById("charactersList").innerHTML = "";
 
-                let charactersWithAgeNumber = document.createElement("h3")
-                charactersWithAgeNumber.innerHTML = "Characters with specific age: ";
+                let charactersWithAgeNumber = document.createElement("h3");
+                charactersWithAgeNumber.innerHTML = "Characters with a specific age: ";
                 document.getElementById("charactersList").appendChild(charactersWithAgeNumber);
                 printCharacters(sortByAgeNumber(allCharactersFlat).reverse());
 
-                let charactersWithAgeString = document.createElement("h3")
-                charactersWithAgeString.innerHTML = "Characters without specific age: ";
+                let charactersWithAgeString = document.createElement("h3");
+                charactersWithAgeString.innerHTML = "Characters without a specific age: ";
                 document.getElementById("charactersList").appendChild(charactersWithAgeString);
                 printCharacters(sortByAgeString(allCharactersFlat).reverse());
             }
-        } */
+        }
     });
 }
-
-/* function sortCharacters() {
-    const selectedOption = selectSortCharacters.selectedIndex; 
-    
-    if (selectedOption === 1){ //Ordena A-Z
-        document.getElementById("charactersList").innerHTML = "";
-        printCharacters(sortByAZCharacters(allCharactersFlat));
-    } 
-    
-    if (selectedOption === 2){ //Ordena Z-A
-        document.getElementById("charactersList").innerHTML = "";
-        printCharacters(sortByAZCharacters(allCharactersFlat).reverse());
-    } 
-    
-    if (selectedOption === 3){ //Ordena por edad con número y sin número de menor a mayor
-        document.getElementById("charactersList").innerHTML = "";
-
-        let charactersWithAgeNumber = document.createElement("h3")
-        charactersWithAgeNumber.innerHTML = "Characters with specific age: ";
-        document.getElementById("charactersList").appendChild(charactersWithAgeNumber);
-        printCharacters(sortByAgeNumber(allCharactersFlat));
-
-        let charactersWithAgeString = document.createElement("h3")
-        charactersWithAgeString.innerHTML = "Characters without specific age: ";
-        document.getElementById("charactersList").appendChild(charactersWithAgeString);
-        printCharacters(sortByAgeString(allCharactersFlat));
-    } 
-    
-    if (selectedOption === 4) { //Ordena por edad con número y sin número de mayor a menor
-        document.getElementById("charactersList").innerHTML = "";
-
-        let charactersWithAgeNumber = document.createElement("h3")
-        charactersWithAgeNumber.innerHTML = "Characters with specific age: ";
-        document.getElementById("charactersList").appendChild(charactersWithAgeNumber);
-        printCharacters(sortByAgeNumber(allCharactersFlat).reverse());
-
-        let charactersWithAgeString = document.createElement("h3")
-        charactersWithAgeString.innerHTML = "Characters without specific age: ";
-        document.getElementById("charactersList").appendChild(charactersWithAgeString);
-        printCharacters(sortByAgeString(allCharactersFlat).reverse());
-    }
-} */
 
 selectSortCharacters.addEventListener("change", sortCharacters);
 

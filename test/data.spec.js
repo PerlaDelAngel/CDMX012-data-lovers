@@ -1,6 +1,6 @@
 import { describe, it } from 'eslint/lib/rule-tester/rule-tester';
 
-import { movieCards, movieCharacters, sortByAZMovies, sortByHR, directors, producers, directorTitles, producerTitles, sortByAZStaff, sortByHRStaff } from '../src/data.js';
+import { movieCards, movieCharacters, sortByAZMovies, sortByHR, directors, producers, directorTitles, producerTitles, sortByAZStaff, sortByHRStaff, sortByAZCharacters, sortByAgeNumber, sortByAgeString } from '../src/data.js';
 
 describe('movieCards', () => {
   it('is a function', () => {
@@ -36,23 +36,29 @@ describe('movieCharacters', () => {
           "id": "fe93adf2-2f3a-4ec4-9f68-5422f1b87c01",
           "name": "Pazu",
           "img": "https://static.wikia.nocookie.net/studio-ghibli/images/8/8b/Pazu.jpg",
-          "gender": "Male"
+          "gender": "Male",
+          "age": "13",
+          "specie": "Human"
         },
         {
           "id": "598f7048-74ff-41e0-92ef-87dc1ad980a9",
           "name": "Lusheeta Toel Ul Laputa",
           "img": "https://static.wikia.nocookie.net/studio-ghibli/images/c/c3/Sheeta.jpg",
-          "gender": "Female"
+          "gender": "Female",
+          "age": "13",
+          "specie": "Human"
         },
         {
           "id": "3bc0b41e-3569-4d20-ae73-2da329bf0786",
           "name": "Dola",
           "img": "https://static.wikia.nocookie.net/studio-ghibli/images/b/b3/Dola.png",
-          "gender": "Female"
+          "gender": "Female",
+          "age": "60",
+          "specie": "Human"
         },
       ]
     }
-    expect(movieCharacters(film)).toEqual([["Pazu", "https://static.wikia.nocookie.net/studio-ghibli/images/8/8b/Pazu.jpg"], ["Lusheeta Toel Ul Laputa", "https://static.wikia.nocookie.net/studio-ghibli/images/c/c3/Sheeta.jpg"], ["Dola", "https://static.wikia.nocookie.net/studio-ghibli/images/b/b3/Dola.png"]]);
+    expect(movieCharacters(film)).toEqual([["Pazu", "https://static.wikia.nocookie.net/studio-ghibli/images/8/8b/Pazu.jpg", "Male", "13", "Human"], ["Lusheeta Toel Ul Laputa", "https://static.wikia.nocookie.net/studio-ghibli/images/c/c3/Sheeta.jpg", "Female", "13", "Human"], ["Dola", "https://static.wikia.nocookie.net/studio-ghibli/images/b/b3/Dola.png", "Female", "60", "Human"]]);
   });
 });
 
@@ -76,6 +82,39 @@ describe('sortByHR', () => {
   it('returns ` sorted array by rating order`', () =>{
     const array1 = [["ABC", "Eli", "100"], ["1", "Perla", "120"], ["TH", "Isabela", "110"]];
     expect(sortByHR(array1)).toEqual([["1", "Perla", "120"], ["TH", "Isabela", "110"], ["ABC", "Eli", "100"]]);
+  });
+});
+
+describe('sortByAZCharacters', () => {
+  it('is a function', () => {
+    expect(typeof sortByAZCharacters).toBe('function');
+  });
+
+  it('returns ` sorted array of characters in alphabetical order`', () =>{
+    const array1 = [['Pazu', 'https://static.wikia.nocookie.net/studio-ghibli/images/8/8b/Pazu.jpg', 'Male', '13', 'Human'], ['Lusheeta Toel Ul Laputa', 'https://static.wikia.nocookie.net/studio-ghibli/images/c/c3/Sheeta.jpg', 'Female', '13', 'Human'], ['Dola', 'https://static.wikia.nocookie.net/studio-ghibli/images/b/b3/Dola.png', 'Female', '60', 'Human'], ['Louis', 'https://static.wikia.nocookie.net/studio-ghibli/images/2/28/Charlies.jpg', 'Male', '30', 'Human']];
+    expect(sortByAZCharacters(array1)).toEqual([['Dola', 'https://static.wikia.nocookie.net/studio-ghibli/images/b/b3/Dola.png', 'Female', '60', 'Human'], ['Louis', 'https://static.wikia.nocookie.net/studio-ghibli/images/2/28/Charlies.jpg', 'Male', '30', 'Human'], ['Lusheeta Toel Ul Laputa', 'https://static.wikia.nocookie.net/studio-ghibli/images/c/c3/Sheeta.jpg', 'Female', '13', 'Human'], ['Pazu', 'https://static.wikia.nocookie.net/studio-ghibli/images/8/8b/Pazu.jpg', 'Male', '13', 'Human']]);
+  });
+});
+
+ describe('sortByAgeNumber', () => {
+  it('is a function', () => {
+    expect(typeof sortByAgeNumber).toBe('function');
+  });
+
+  it('returns ` sorted array by rating order`', () =>{
+    const array1 = [["ABC", "Eli", "Hola", "100"], ["1", "Perla", "Adios", "120"], ["TH", "Isabela", "Hola", "110"], ["T", "234", "Si", "NA"]];
+    expect(sortByAgeNumber(array1)).toEqual([["ABC", "Eli", "Hola", "100"], ["TH", "Isabela", "Hola", "110"], ["1", "Perla", "Adios", "120"]]);
+  });
+});
+
+describe('sortByAgeString', () => {
+  it('is a function', () => {
+    expect(typeof sortByAgeString).toBe('function');
+  });
+
+  it('returns ` sorted array by rating order`', () =>{
+    const array1 = [['Boh', 'https://static.wikia.nocookie.net/studio-ghibli/images/7/7e/Boh_winks.jpg', 'Male', 'Child', 'unknown'], ['Uncle Pom', 'https://static.wikia.nocookie.net/studio-ghibli/images/d/de/Uncle_Pom.png', 'Male', 'Unspecified/Elderly', 'Human'], ['General Muoro', 'https://static.wikia.nocookie.net/studio-ghibli/images/1/12/Muoro.jpg', 'Male', 'Unspecified/Adult', 'Human'], ['Catbus', 'https://static.wikia.nocookie.net/studio-ghibli/images/3/30/Catbus.jpg', 'Male', 'NA', 'Cat'], ['Mr. Okajima', 'https://static.wikia.nocookie.net/studio-ghibli/images/5/58/Mr._Okajima.png', 'Male', 'Middle age', 'Human'], ['Sugimura', 'https://static.wikia.nocookie.net/studio-ghibli/images/b/b7/Sugimura.jpg', 'Male', 'Young', 'Human'], ['Capo', 'https://static.wikia.nocookie.net/studio-ghibli/images/9/98/Aiuto_Gang_boss.jpg', 'Male', 'Teenager', 'Human']];
+    expect(sortByAgeString(array1)).toEqual([['Boh', 'https://static.wikia.nocookie.net/studio-ghibli/images/7/7e/Boh_winks.jpg', 'Male', 'Child', 'unknown', 1], ['Capo', 'https://static.wikia.nocookie.net/studio-ghibli/images/9/98/Aiuto_Gang_boss.jpg', 'Male', 'Teenager', 'Human', 2], ['Sugimura', 'https://static.wikia.nocookie.net/studio-ghibli/images/b/b7/Sugimura.jpg', 'Male', 'Young', 'Human', 3], ['General Muoro', 'https://static.wikia.nocookie.net/studio-ghibli/images/1/12/Muoro.jpg', 'Male', 'Unspecified/Adult', 'Human', 4], ['Mr. Okajima', 'https://static.wikia.nocookie.net/studio-ghibli/images/5/58/Mr._Okajima.png', 'Male', 'Middle age', 'Human', 5], ['Uncle Pom', 'https://static.wikia.nocookie.net/studio-ghibli/images/d/de/Uncle_Pom.png', 'Male', 'Unspecified/Elderly', 'Human', 6], ['Catbus', 'https://static.wikia.nocookie.net/studio-ghibli/images/3/30/Catbus.jpg', 'Male', 'NA', 'Cat', 7]]);
   });
 });
 
