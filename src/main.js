@@ -27,44 +27,42 @@ document.getElementById("btnStaff").addEventListener("click", ()=>{ displaySecti
 let allMovies = []; 
 
 // Le agrega al array anterior los datos obtenidos de data.films.
-for(let i = 0; i < data.films.length; i++){ 
-    allMovies.push(movieCards(data.films[i]));
-}
+data.films.forEach(movie => allMovies.push(movieCards(movie)));
 
 let movieList = document.getElementById("movieList");
 
 // Crea e imprime tarjetas (artículos) en la sección movieList del HTML.
 function printMovieCards(allMovies){
     movieList.innerHTML = "";
-    for(let j = 0; j < allMovies.length; j++){
+    allMovies.forEach(movie =>{
         let elementArticle = document.createElement("article");
-        elementArticle.setAttribute("id", allMovies[j][3]);
+        elementArticle.setAttribute("id", movie[3]);
 
         let imgMovie = document.createElement("img");
-        imgMovie.setAttribute("src", allMovies[j][0]);
+        imgMovie.setAttribute("src", movie[0]);
     
         let elementP = document.createElement("p");
 
         let stars = "";
-        if(Number(allMovies[j][2]) < 21){
+        if(Number(movie[2]) < 21){
             stars = " ★ ";
-        } if(Number(allMovies[j][2]) >= 21 && Number(allMovies[j][2]) <= 40){
+        } if(Number(movie[2]) >= 21 && Number(movie[2]) <= 40){
             stars = " ★★ ";
-        } if(Number(allMovies[j][2]) >= 41 && Number(allMovies[j][2]) <= 60){
+        } if(Number(movie[2]) >= 41 && Number(movie[2]) <= 60){
             stars = " ★★★ ";
-        }if(Number(allMovies[j][2]) >= 61 && Number(allMovies[j][2]) <= 80){
+        }if(Number(movie[2]) >= 61 && Number(movie[2]) <= 80){
             stars = " ★★★★ ";
-        }if(Number(allMovies[j][2]) >= 81){
+        }if(Number(movie[2]) >= 81){
             stars = " ★★★★★ ";
         }
 
-        elementP.innerHTML = "<strong>" + allMovies[j][1] + "</strong>" + "<br>" + "<span style='color:#FDCD00; font-size:150%';>" + stars + "</span> <br> Rating: " + allMovies[j][2] + "%";
+        elementP.innerHTML = "<strong>" + movie[1] + "</strong>" + "<br>" + "<span style='color:#FDCD00; font-size:150%';>" + stars + "</span> <br> Rating: " + movie[2] + "%";
 
         elementArticle.appendChild(imgMovie);
         elementArticle.appendChild(elementP);
 
         movieList.appendChild(elementArticle);
-    }
+    })
 }
 
 printMovieCards(allMovies); // Imprime películas
@@ -95,12 +93,9 @@ const selectedSort = () => {
 
 //Agrega el evento a ejecutar cuando haya un cambio en el select
 selectSortMovies.addEventListener("change", selectedSort);
+//console.log(moviesArticles);
 
-//SECCIÓN PARA IMPRIMIR INFORMACIÓN DE CADA PELÍCULA
-
-//Imprime los detalles de cada película
-printMovieDetails();
-
+//SECCIÓN PARA IMPRIMIR INFORMACIÓN DE CADA PELÍCULA-----------------------------------------------
 function printMovieDetails(){
     for(let i = 0; i < moviesArticles.length; i++){
         moviesArticles[i].addEventListener("click", () => {
@@ -166,9 +161,12 @@ function printMovieDetails(){
     }
 }
 
+//Imprime los detalles de cada película
+printMovieDetails();
+
 //Botón de regresar a la sección de películas para cada película individual
-document.body.addEventListener("click", function (boton) {
-    if(boton.target.id === "back-button"){
+document.body.addEventListener("click", function (button) {
+    if(button.target.id === "back-button"){
         displaySections(sectionOneMovie, sectionStaff, sectionCharacters, sectionMovies);
     }
 });
@@ -210,29 +208,28 @@ function filterByMovie(){
     data.films.forEach(movie =>{
         if(title === movie.title){
             selectSortCharacters.selectedIndex = 0;
-            document.getElementById("charactersList").innerHTML = " ";
+            document.getElementById("charactersList").innerHTML = "";
             printCharacters(movieCharacters(movie));
         } else if (title === "All movies"){
             selectSortCharacters.selectedIndex = 0;
-            document.getElementById("charactersList").innerHTML = " ";
+            document.getElementById("charactersList").innerHTML = "";
             data.films.forEach(film => printCharacters(movieCharacters(film)));
         }
     })
 }
 
+//Filtro By Movie en la sección de Characters
 selectFilterMovie.addEventListener("change", filterByMovie);
 
 // ORDENA PERSONAJES
 let allCharacters = []; //Array de 3 Dimensiones: Película, personaje, y 5 elementos por personaje
 
-data.films.forEach(film => {
-    allCharacters.push(movieCharacters(film));
-});
+data.films.forEach(film => allCharacters.push(movieCharacters(film)));
 
 //Crea un array de 2 dimensiones: personajes y 5 elementos de cada uno
 let allCharactersFlat = allCharacters.flat(1);
-console.log(allCharactersFlat);
 
+//Select del sort en la sección de Characters
 const selectSortCharacters = document.querySelector("#selectSortCharacters");
 
 function sortCharacters() {
@@ -245,14 +242,10 @@ function sortCharacters() {
             if (selectedOption === 1){ //Ordena A-Z
                 document.getElementById("charactersList").innerHTML = "";
                 printCharacters(sortByAZCharacters(movieCharacters(movie)));
-            } 
-
-            if (selectedOption === 2){ //Ordena Z-A
+            } if (selectedOption === 2){ //Ordena Z-A
                 document.getElementById("charactersList").innerHTML = "";
                 printCharacters(sortByAZCharacters(movieCharacters(movie)).reverse());
-            }
-
-            if (selectedOption === 3){ //Ordena por edad con número y sin número de menor a mayor
+            } if (selectedOption === 3){ //Ordena por edad con número y sin número de menor a mayor
                 document.getElementById("charactersList").innerHTML = "";
                 //Para que no imprima si la película no tiene personajes con esta condición
                 if(sortByAgeNumber(movieCharacters(movie)).length > 0){
@@ -260,17 +253,13 @@ function sortCharacters() {
                     charactersWithAgeNumber.innerHTML = "Characters with a specific age: ";
                     document.getElementById("charactersList").appendChild(charactersWithAgeNumber);
                     printCharacters(sortByAgeNumber(movieCharacters(movie)));
-                }
-
-                if(sortByAgeString(movieCharacters(movie)).length > 0){
+                } if(sortByAgeString(movieCharacters(movie)).length > 0){
                     let charactersWithAgeString = document.createElement("h3");
                     charactersWithAgeString.innerHTML = "Characters without a specific age: ";
                     document.getElementById("charactersList").appendChild(charactersWithAgeString);
                     printCharacters(sortByAgeString(movieCharacters(movie)));
                 }
-            }
-
-            if (selectedOption === 4) { //Ordena por edad con número y sin número de mayor a menor
+            } if (selectedOption === 4) { //Ordena por edad con número y sin número de mayor a menor
                 document.getElementById("charactersList").innerHTML = "";
 
                 if(sortByAgeNumber(movieCharacters(movie)).length > 0){
@@ -278,28 +267,21 @@ function sortCharacters() {
                     charactersWithAgeNumber.innerHTML = "Characters with a specific age: ";
                     document.getElementById("charactersList").appendChild(charactersWithAgeNumber);
                     printCharacters(sortByAgeNumber(movieCharacters(movie)).reverse());
-                }
-
-                if(sortByAgeString(movieCharacters(movie)).length > 0){
+                } if(sortByAgeString(movieCharacters(movie)).length > 0){
                     let charactersWithAgeString = document.createElement("h3")
                     charactersWithAgeString.innerHTML = "Characters without a specific age: ";
                     document.getElementById("charactersList").appendChild(charactersWithAgeString);
                     printCharacters(sortByAgeString(movieCharacters(movie)).reverse());
                 }
             }
-
         } else if (title === "Movie" || title === "All movies") {
             if (selectedOption === 1){ //Ordena A-Z
                 document.getElementById("charactersList").innerHTML = "";
                 printCharacters(sortByAZCharacters(allCharactersFlat));
-            } 
-    
-            if (selectedOption === 2){ //Ordena Z-A
+            } if (selectedOption === 2){ //Ordena Z-A
                 document.getElementById("charactersList").innerHTML = "";
                 printCharacters(sortByAZCharacters(allCharactersFlat).reverse());
-            } 
-            
-            if (selectedOption === 3){ //Ordena por edad con número y sin número de menor a mayor
+            } if (selectedOption === 3){ //Ordena por edad con número y sin número de menor a mayor
                 document.getElementById("charactersList").innerHTML = "";
 
                 let charactersWithAgeNumber = document.createElement("h3");
@@ -311,9 +293,7 @@ function sortCharacters() {
                 charactersWithAgeString.innerHTML = "Characters without a specific age: ";
                 document.getElementById("charactersList").appendChild(charactersWithAgeString);
                 printCharacters(sortByAgeString(allCharactersFlat));
-            } 
-            
-            if (selectedOption === 4) { //Ordena por edad con número y sin número de mayor a menor
+            } if (selectedOption === 4) { //Ordena por edad con número y sin número de mayor a menor
                 document.getElementById("charactersList").innerHTML = "";
 
                 let charactersWithAgeNumber = document.createElement("h3");
@@ -330,17 +310,17 @@ function sortCharacters() {
     });
 }
 
+//Ejecuta el ordenado de personajes
 selectSortCharacters.addEventListener("change", sortCharacters);
-
 
 // SECCIÓN DE DIRECTORES Y PRODUCTORES -------------------------------------------------------------
 //Obtener una lista con los nombres de todos los directores y productores
 let people = [];
 
-for(let i = 0; i < data.films.length; i++){ 
-    people.push(directors(data.films[i]));
-    people.push(producers(data.films[i]));
-}
+data.films.forEach(film => {
+    people.push(directors(film));
+    people.push(producers(film));
+})
 
 //Filtrar la lista para quitar los repetidos, da una lista de 9 nombres
 let nameList = people.filter((item,index) => {
@@ -351,23 +331,25 @@ let nameList = people.filter((item,index) => {
 const directorTitlesArray = [];
 const directorTitlesArrayModif = [];
 
-for(let i = 0; i < nameList.length; i++){
-    directorTitlesArray.push(directorTitles(data.films, nameList[i]));
-    directorTitlesArrayModif.push(directorTitles(data.films, nameList[i]));
-}
+nameList.forEach(name => {
+    directorTitlesArray.push(directorTitles(data.films, name));
+    directorTitlesArrayModif.push(directorTitles(data.films, name));
+})
 
 //Saca un array con los titulos de las peliculas donde participó cada productor
 const producerTitlesArray = [];
 const producerTitlesArrayModif = [];
 
-for(let i = 0; i < nameList.length; i++){
-    producerTitlesArray.push(producerTitles(data.films, nameList[i]));
-    producerTitlesArrayModif.push(producerTitles(data.films, nameList[i]));
-}
+nameList.forEach(name => {
+    producerTitlesArray.push(producerTitles(data.films, name));
+    producerTitlesArrayModif.push(producerTitles(data.films, name));
+})
 
+//Junta los arrays de directores y productores en uno solo
 const staff = directorTitlesArray.concat(producerTitlesArray);
-const staffModif = directorTitlesArray.concat(producerTitlesArray);
+const staffModif = directorTitlesArray.concat(producerTitlesArray); //Este array es para aplicar el ordenado
 
+//Función para imprimir las tarjetas por persona
 function printStaff(staff){
     document.getElementById("staffList").innerHTML = "";
     for(let j = 0; j < staff.length; j++){
@@ -397,6 +379,7 @@ function printStaff(staff){
 
 printStaff(staff);
 
+//Sección del filtro en staff
 const btnAll = document.querySelector("#allRadio");
 btnAll.addEventListener("click", filter);
 
@@ -408,6 +391,7 @@ btnProducers.addEventListener("click", filter);
 
 const selectSortStaff = document.querySelector("#selectSortStaff");
 
+//Función de filtrado para staff
 let c = 1;
 function filter() {
     if(btnAll.checked){
@@ -427,6 +411,7 @@ function filter() {
     }
 }
 
+//Función de ordenado para Staff
 function sort(){
     const selectedOption = selectSortStaff.selectedIndex;
     if (c === 1){
@@ -443,8 +428,7 @@ function sort(){
             let staffZA = sortByAZStaff(staffModif).reverse();
             printStaff(staffZA);
         }
-    }
-    if (c === 2){
+    } if (c === 2){
         if (selectedOption === 1){
             let staffHR = sortByHRStaff(directorTitlesArrayModif);
             printStaff(staffHR);
@@ -458,8 +442,7 @@ function sort(){
             let staffZA = sortByAZStaff(directorTitlesArrayModif).reverse();
             printStaff(staffZA);
         }
-    }
-    if (c === 3){
+    } if (c === 3){
         if (selectedOption === 1){
             let staffHR = sortByHRStaff(producerTitlesArrayModif);
             printStaff(staffHR);

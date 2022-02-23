@@ -28,7 +28,7 @@ export const sortByHR = (movieRating) => {
 }
 
 //PERSONAJES
-//TEST Devuelve un array bidimensional por película, en donde cada personaje tiene 5 elementos
+// Devuelve un array bidimensional por película, en donde cada personaje tiene 5 elementos
 export const movieCharacters = (movie) => {
   let characters = [];
 
@@ -39,7 +39,7 @@ export const movieCharacters = (movie) => {
 
   return characters;
 }
-//TEST Ordena un array de personajes en orden alfabético
+// Ordena un array de personajes en orden alfabético
 export const sortByAZCharacters = (movieCharacters) => {
   let charactersAZ = movieCharacters.sort(function(a,b){
     if(a[0] === b[0]){
@@ -50,7 +50,7 @@ export const sortByAZCharacters = (movieCharacters) => {
   return charactersAZ;
 };
 
-//TEST Ordena un array de personajes por edad si tienen la edad como un número
+// Ordena un array de personajes por edad si tienen la edad como un número
 export const sortByAgeNumber = (movieCharacters) => {
   let ageInNumber = movieCharacters.filter(character => character[3].length < 5 && character[3]!="NA" && character[3]!="");
 
@@ -61,7 +61,7 @@ export const sortByAgeNumber = (movieCharacters) => {
   return charactersAge; 
 }
 
-//TEST Ordena un array de personajes por edad si tienen la edad en una string
+// Ordena un array de personajes por edad si tienen la edad en una string
 export const sortByAgeString = (movieCharacters) => {
   let ageInString = movieCharacters.filter(character => character[3].length > 4 || character[3]==="NA" || character[3]==="");
 
@@ -157,7 +157,6 @@ export const sortByAZStaff = (staffNames) => {
   return staffAZ;
 };
 
-//TEST
 // Nos devuelve un array ordenado de mayor a menor, para lxs directorxs y productorxs.
 export const sortByHRStaff = (staff) => {
   let clearStaff = staff.filter((arrayStaff) => arrayStaff.length > 3)
