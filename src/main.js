@@ -254,6 +254,7 @@ function sortCharacters() {
 
             if (selectedOption === 3){ //Ordena por edad con número y sin número de menor a mayor
                 document.getElementById("charactersList").innerHTML = "";
+                //Para que no imprima si la película no tiene personajes con esta condición
                 if(sortByAgeNumber(movieCharacters(movie)).length > 0){
                     let charactersWithAgeNumber = document.createElement("h3");
                     charactersWithAgeNumber.innerHTML = "Characters with a specific age: ";
