@@ -254,30 +254,37 @@ function sortCharacters() {
 
             if (selectedOption === 3){ //Ordena por edad con número y sin número de menor a mayor
                 document.getElementById("charactersList").innerHTML = "";
-        
-                let charactersWithAgeNumber = document.createElement("h3");
-                charactersWithAgeNumber.innerHTML = "Characters with a specific age: ";
-                document.getElementById("charactersList").appendChild(charactersWithAgeNumber);
-                printCharacters(sortByAgeNumber(movieCharacters(movie)));
-        
-                let charactersWithAgeString = document.createElement("h3");
-                charactersWithAgeString.innerHTML = "Characters without a specific age: ";
-                document.getElementById("charactersList").appendChild(charactersWithAgeString);
-                printCharacters(sortByAgeString(movieCharacters(movie)));
+                if(sortByAgeNumber(movieCharacters(movie)).length > 0){
+                    let charactersWithAgeNumber = document.createElement("h3");
+                    charactersWithAgeNumber.innerHTML = "Characters with a specific age: ";
+                    document.getElementById("charactersList").appendChild(charactersWithAgeNumber);
+                    printCharacters(sortByAgeNumber(movieCharacters(movie)));
+                }
+
+                if(sortByAgeString(movieCharacters(movie)).length > 0){
+                    let charactersWithAgeString = document.createElement("h3");
+                    charactersWithAgeString.innerHTML = "Characters without a specific age: ";
+                    document.getElementById("charactersList").appendChild(charactersWithAgeString);
+                    printCharacters(sortByAgeString(movieCharacters(movie)));
+                }
             }
 
             if (selectedOption === 4) { //Ordena por edad con número y sin número de mayor a menor
                 document.getElementById("charactersList").innerHTML = "";
-        
-                let charactersWithAgeNumber = document.createElement("h3");
-                charactersWithAgeNumber.innerHTML = "Characters with a specific age: ";
-                document.getElementById("charactersList").appendChild(charactersWithAgeNumber);
-                printCharacters(sortByAgeNumber(movieCharacters(movie)).reverse());
-        
-                let charactersWithAgeString = document.createElement("h3")
-                charactersWithAgeString.innerHTML = "Characters without a specific age: ";
-                document.getElementById("charactersList").appendChild(charactersWithAgeString);
-                printCharacters(sortByAgeString(movieCharacters(movie)).reverse());
+
+                if(sortByAgeNumber(movieCharacters(movie)).length > 0){
+                    let charactersWithAgeNumber = document.createElement("h3");
+                    charactersWithAgeNumber.innerHTML = "Characters with a specific age: ";
+                    document.getElementById("charactersList").appendChild(charactersWithAgeNumber);
+                    printCharacters(sortByAgeNumber(movieCharacters(movie)).reverse());
+                }
+
+                if(sortByAgeString(movieCharacters(movie)).length > 0){
+                    let charactersWithAgeString = document.createElement("h3")
+                    charactersWithAgeString.innerHTML = "Characters without a specific age: ";
+                    document.getElementById("charactersList").appendChild(charactersWithAgeString);
+                    printCharacters(sortByAgeString(movieCharacters(movie)).reverse());
+                }
             }
 
         } else if (title === "Movie" || title === "All movies") {
