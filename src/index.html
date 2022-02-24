@@ -10,26 +10,25 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
     </head>
     <body>
-        <button class="go-up" id="button-up">🡹</button>
+        <button class="go-up" id="buttonUp">🡹</button>
+        <header>   
+            <div class="top-header">
+                <img src="./Images/Logo.png" alt="Logo" class="nav-logo">
+                <a href="https://linktr.ee/PILaboratoria" target="_blank"><button class="nav-buttons">Contact us</button></a>
+            </div>
 
-        <nav>
-            <img src="./Images/Logo.png" alt="Logo" class="nav-logo">
-            <a href="https://linktr.ee/PILaboratoria" target="_blank"><button class="nav-buttons">Contact us</button></a>
-        </nav>
-
-        <header>
             <h1>GHIBLIPEDIA</h1>
             <p>Welcome to Studio Ghibli's world! <br> Discover more about your favorite animated movies.</p>
-            <section id="menu" class="menu">
+            <nav id="menu" class="menu">
                 <button id="btnMovies" class="menu-buttons">Movies</button>
                 <button id="btnCharacters" class="menu-buttons">Characters</button>
                 <button id="btnStaff" class="menu-buttons">Directors and producers</button>
-            </section>
+            </nav>
         </header>
 
-        <main class="movies-content" id="movies-content">
+        <main class="movies-content" id="moviesContent">
             <h2>MOVIES</h2>
-            <section class="sort">
+            <div class="sort">
                 <select id="selectSortMovies">
                     <option selected>Sort by</option>
                     <option>Highest rating</option>
@@ -37,23 +36,23 @@
                     <option>A-Z</option>
                     <option>Z-A</option>
                 </select>
-            </section>
-            <section id="movieList"></section>
+            </div>
+            <div id="movieList"></div>
         </main>
 
-        <main class="movie" id="individual-movies"></main>
+        <main class="movie" id="individualMovies"></main>
 
-        <main class="characters-content" id="characters-content">
+        <main class="characters-content" id="charactersContent">
             <h2>CHARACTERS</h2>
             <div class="filter-and-sort">
-                <section class="charactersFilter">
+                <div class="charactersFilter">
                     <p><strong>Filter by: </strong></p> 
                     <select id="filterMovies">
                         <option selected disabled>Movie</option>
                         <option>All movies</option>
                     </select>
-                </section>
-                <section class="sort"> 
+                </div>
+                <div class="sort"> 
                     <select id="selectSortCharacters">
                         <option selected>Sort by</option>
                         <option>A-Z</option>
@@ -61,16 +60,16 @@
                         <option>Youngest to oldest</option>
                         <option>Oldest to youngest</option>
                     </select>
-                </section>
+                </div>
             </div>
-            <section id="charactersList"></section>
+            <div id="charactersList"></div>
         </main>
 
-        <main class="staff-content" id="staff-content">
+        <main class="staff-content" id="staffContent">
             <h2>DIRECTORS AND PRODUCERS</h2>
 
             <div class="filter-and-sort">
-                <section class="staffFilter">
+                <div class="staffFilter">
                     <p><strong>Filter by: </strong></p> 
                     <input type="radio" id="allRadio" name="staffRadio" checked>
                     <label for="allRadio">All</label>
@@ -78,8 +77,8 @@
                     <label for="directorRadio">Directors</label>
                     <input type="radio" id="producerRadio" name="staffRadio">
                     <label for="producerRadio">Producers</label>
-                </section>   
-                <section class="sort"> 
+                </div>  
+                <div class="sort"> 
                     <select id="selectSortStaff">
                         <option selected>Sort by</option>
                         <option>Highest rating</option>
@@ -87,13 +86,13 @@
                         <option>A-Z</option>
                         <option>Z-A</option>
                     </select>
-                </section>
+                </div>
             </div>
-            <section id="staffList"></section>
+            <div id="staffList"></div>
         </main>
 
         <footer>
-            <img src="Images/TotoroMain.png" alt="Totoro" id="front-page-img">
+            <img src="Images/TotoroMain.png" alt="Totoro" id="frontPageImg">
             <p>© 2022 by <a href="https://github.com/PerlaDelAngel" target="_blank">Perla Del Ángel</a> &#38;
                 <a href="https://github.com/maisahr" target="_blank">Isabela Huitron</a>. <br>All rights reserved.</p>
         </footer>

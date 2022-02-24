@@ -35,7 +35,7 @@ body{
         margin: 2% !important;
     }
 
-    .movie aside{
+    .element-pr{
         height: 40%;
         width: auto !important;
     }
@@ -75,7 +75,7 @@ body{
     height: 70px;
 }
 
-nav{
+.top-header{
     margin: 1em 10%;
     padding: 0;
     overflow: hidden;
@@ -247,7 +247,7 @@ article p {
     width: 75%;
 }
 
-.movie aside {
+.element-pr {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -383,7 +383,7 @@ footer {
     text-align: center;
 }
 
-#front-page-img{
+#frontPageImg{
     position: absolute;
     width: 20%;
     right: 0%;

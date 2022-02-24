@@ -3,10 +3,10 @@ import { movieCards, movieCharacters, directors, producers, directorTitles, prod
 import data from './data/ghibli/ghibli.js';
 
 // DESPLEGAR SECCIONES
-const sectionMovies = document.getElementById("movies-content");
-const sectionOneMovie = document.getElementById("individual-movies");
-const sectionCharacters = document.getElementById("characters-content");
-const sectionStaff = document.getElementById("staff-content");
+const sectionMovies = document.getElementById("moviesContent");
+const sectionOneMovie = document.getElementById("individualMovies");
+const sectionCharacters = document.getElementById("charactersContent");
+const sectionStaff = document.getElementById("staffContent");
 
 function displaySections(hideSection, secHideSection, thirdHideSection, showSection){
     hideSection.style.display = "none";
@@ -30,6 +30,8 @@ let allMovies = [];
 for(let i = 0; i < data.films.length; i++){ 
     allMovies.push(movieCards(data.films[i]));
 }
+
+console.log(allMovies);
 
 let movieList = document.getElementById("movieList");
 
@@ -105,23 +107,24 @@ function printMovieDetails(){
     for(let i = 0; i < moviesArticles.length; i++){
         moviesArticles[i].addEventListener("click", () => {
             let movieId = moviesArticles[i].getAttribute("id");
-            document.getElementById("individual-movies").innerHTML = "";
+            document.getElementById("individualMovies").innerHTML = "";
             
             data.films.forEach( film => {
                 if(movieId === film.id){
                     displaySections(sectionMovies, sectionStaff, sectionCharacters, sectionOneMovie);
      
-                    let elementSection = document.createElement("section");
-                    elementSection.setAttribute("class", "poster-description")
+                    let elementDiv = document.createElement("div");
+                    elementDiv.setAttribute("class", "poster-description")
      
                     let elementH2 = document.createElement("h2");
                     elementH2.innerHTML = film.title;
 
                     let elementButton = document.createElement("button");
                     elementButton.innerHTML = "🡸";
-                    elementButton.setAttribute("id", "back-button");
+                    elementButton.setAttribute("id", "backButton");
 
-                    let elementPR  = document.createElement("aside");
+                    let elementPR  = document.createElement("div");
+                    elementPR.setAttribute("class", "element-pr");
      
                     let poster = document.createElement("img");
                     poster.setAttribute("src", film.poster);
@@ -135,14 +138,14 @@ function printMovieDetails(){
                     elementRating.innerHTML = "<strong><span style='color:#FDCD00; font-size:150%';> ★ </span>" + film.rt_score + "% </strong>";
      
                     elementPR.append(poster, elementRating);
-                    elementSection.append(elementButton, elementPR, elementP);
+                    elementDiv.append(elementButton, elementPR, elementP);
      
                     // Seccion de los personajes (:
                     let characters = movieCharacters(film);
                     let charactersBlock = document.createElement("section");
                     charactersBlock.innerHTML = "<h3>Characters</h3>";
      
-                    let charactersSection = document.createElement("section");
+                    let charactersSection = document.createElement("div");
                     charactersSection.setAttribute("class", "characters");
      
                     characters.forEach(character => {
@@ -158,8 +161,8 @@ function printMovieDetails(){
                         charactersSection.appendChild(elementCharacter);
                     });
      
-                document.getElementById("individual-movies").append(elementH2, elementSection, charactersBlock, charactersSection);
-                document.getElementById("individual-movies").scrollIntoView();
+                document.getElementById("individualMovies").append(elementH2, elementDiv, charactersBlock, charactersSection);
+                document.getElementById("individualMovies").scrollIntoView();
                 }
             });
         });
@@ -168,7 +171,7 @@ function printMovieDetails(){
 
 //Botón de regresar a la sección de películas para cada película individual
 document.body.addEventListener("click", function (boton) {
-    if(boton.target.id === "back-button"){
+    if(boton.target.id === "backButton"){
         displaySections(sectionOneMovie, sectionStaff, sectionCharacters, sectionMovies);
     }
 });
@@ -479,7 +482,7 @@ function sort(){
 selectSortStaff.addEventListener("change", sort);
 
 //Botón para subir hasta el principio de la página 
-document.getElementById("button-up").addEventListener("click", () => {
+document.getElementById("buttonUp").addEventListener("click", () => {
     window.scroll({
         top:0,
         left:0,
