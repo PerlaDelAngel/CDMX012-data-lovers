@@ -4,93 +4,6 @@ body{
     color: #454545;
 }
 
-@media only screen and (max-width: 600px){
-    html{
-        font-size: 10px;
-    }
-
-    .nav-logo{
-        height: 50px !important;
-    }
-
-    .menu-buttons{
-        width: 25% !important;
-        font-size: 1.2rem !important;
-    }
-
-    article{
-        font-size: 1.2rem;
-    }
-
-    h2{
-        font-size: 2rem !important;
-        margin-bottom: 0.5%;
-    }
-
-    #movieList article{
-        width: 40% !important;
-    }
-    
-    .movies-content .sort {
-        margin-bottom: 2% !important;
-        margin-top: 4% !important;
-        padding-right: 0 !important;
-        justify-content: center !important;
-    }
-
-    .poster-description{
-        flex-direction: column;
-        margin: 2% !important;
-    }
-
-    .movie aside{
-        height: 40%;
-        width: auto !important;
-    }
-
-    .description{
-        width: 80% !important;
-    }
-
-    .characters article{
-        width: 40%;
-        justify-content: center;
-        padding: 4% 1% 0% 1%;
-    }
-
-    .characters img{
-        margin: 1em;
-    }
-
-    #staffList article {
-        width: 75% !important;
-    }
-
-    .filter-and-sort{
-        flex-direction: column !important;
-        align-items: flex-end;
-        margin-bottom: 4%;
-        align-items: center;
-    }
-
-    select{
-        font-size: 1.1rem;
-    }
-
-    .charactersFilter{
-        margin-bottom: 0.5em;
-        justify-content: center;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-    }
-
-    #selectSortCharacters select{
-        padding-right: 0;
-    }
-}
-
-
 .staff-content, .movie, .characters-content {
     display: none;
 }
@@ -444,4 +357,90 @@ footer a:visited{
     border: 2px solid white;
     color: white;
     background-color: #0095EA;
+}
+
+@media only screen and (max-width: 600px){
+    html{
+        font-size: 10px;
+    }
+
+    .nav-logo{
+        height: 50px ;
+    }
+
+    .menu-buttons{
+        width: 25% ;
+        font-size: 1.2rem ;
+    }
+
+    article{
+        font-size: 1.2rem;
+    }
+
+    h2{
+        font-size: 2rem ;
+        margin-bottom: 0.5%;
+    }
+
+    #movieList article{
+        width: 40% ;
+    }
+    
+    .movies-content .sort {
+        margin-bottom: 2% ;
+        margin-top: 4% ;
+        padding-right: 0 ;
+        justify-content: center ;
+    }
+
+    .poster-description{
+        flex-direction: column;
+        margin: 2% ;
+    }
+
+    .movie aside{
+        height: 40%;
+        width: auto ;
+    }
+
+    .description{
+        width: 80% ;
+    }
+
+    .characters article{
+        width: 40%;
+        justify-content: center;
+        padding: 4% 1% 0% 1%;
+    }
+
+    .characters img{
+        margin: 1em;
+    }
+
+    #staffList article {
+        width: 75% ;
+    }
+
+    .filter-and-sort{
+        flex-direction: column;
+        align-items: flex-end;
+        margin-bottom: 4%;
+        align-items: center;
+    }
+
+    select{
+        font-size: 1.1rem;
+    }
+
+    .charactersFilter{
+        margin-bottom: 0.5em;
+        justify-content: center;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    #selectSortCharacters select{
+        padding-right: 0;
+    }
 }
